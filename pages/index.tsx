@@ -1,3 +1,14 @@
+import Head from "next/head";
+
 export default function Home() {
-  return <div>Welcome3 to Next.js!</div>;
+  return (
+    <>
+      <Head>
+        <title>Robert Ryszka</title>
+      </Head>
+      <main>
+        <h1>lol</h1>
+      </main>
+    </>
+  );
 }
