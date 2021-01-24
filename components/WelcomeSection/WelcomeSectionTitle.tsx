@@ -8,20 +8,32 @@ const Title = styled.h1`
   display: flex;
   flex-direction: column;
 `;
+const Overflow = styled.span`
+  overflow: hidden;
+`;
+const OverflowDiv = styled.div`
+  overflow: hidden;
+`;
+const Wrapper = styled.span`
+  display: block;
+`;
+const Info = styled.h2`
+  color: white;
+`;
 const WelcomeSectionTitle = () => {
   return (
     <>
       <Title>
-        <span>
-          <span>Hello.</span>
-        </span>
-        <span>
-          <span>I am Robert</span>
-        </span>
+        <Overflow>
+          <Wrapper>Hello.</Wrapper>
+        </Overflow>
+        <Overflow>
+          <Wrapper>I am Robert</Wrapper>
+        </Overflow>
       </Title>
-      <div>
-        <h2>Web Developer</h2>
-      </div>
+      <OverflowDiv>
+        <Info>Web Developer</Info>
+      </OverflowDiv>
     </>
   );
 };
