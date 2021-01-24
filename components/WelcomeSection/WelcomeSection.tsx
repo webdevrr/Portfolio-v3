@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import WelcomeSectionTitle from "./WelcomeSectionTitle";
 
 const Section = styled.section`

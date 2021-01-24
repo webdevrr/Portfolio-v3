@@ -1,5 +1,6 @@
 import { AppProps } from "next/app";
 import { createGlobalStyle } from "styled-components";
+
 import GlobalFonts from "../public/fonts/fonts";
 
 const GlobalStyle = createGlobalStyle`
