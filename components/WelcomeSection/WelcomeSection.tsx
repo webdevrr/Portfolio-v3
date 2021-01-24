@@ -1,12 +1,20 @@
 import styled from "styled-components";
+import WelcomeSectionTitle from "./WelcomeSectionTitle";
 
 const Section = styled.section`
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  font-family: "Monument";
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const WelcomeSection = () => {
-  return <Section></Section>;
+  return (
+    <Section>
+      <WelcomeSectionTitle />
+    </Section>
+  );
 };
 
 export default WelcomeSection;
