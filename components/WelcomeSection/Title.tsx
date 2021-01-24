@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Title = styled.h1`
+const BigTitle = styled.h1`
   color: white;
   font-size: 5rem;
   letter-spacing: 3px;
@@ -19,17 +19,17 @@ const Wrapper = styled.span`
 const Info = styled.h2`
   color: white;
 `;
-const WelcomeSectionTitle = () => {
+const Title = () => {
   return (
     <>
-      <Title>
+      <BigTitle>
         <Overflow>
           <Wrapper>Hello.</Wrapper>
         </Overflow>
         <Overflow>
           <Wrapper>I am Robert</Wrapper>
         </Overflow>
-      </Title>
+      </BigTitle>
       <OverflowDiv>
         <Info>Web Developer</Info>
       </OverflowDiv>
@@ -37,4 +37,4 @@ const WelcomeSectionTitle = () => {
   );
 };
 
-export default WelcomeSectionTitle;
+export default Title;

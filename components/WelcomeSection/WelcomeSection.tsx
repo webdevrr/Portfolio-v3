@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import WelcomeSectionTitle from "./WelcomeSectionTitle";
-import WelcomeSectionCircle from "./WelcomeSectionCircle";
+import Title from "./Title";
+import Circle from "./Circle";
 
 const Section = styled.section`
   width: 100vw;
@@ -21,8 +21,8 @@ const WelcomeSection = () => {
   return (
     <Section>
       <Content>
-        <WelcomeSectionTitle />
-        <WelcomeSectionCircle />
+        <Title />
+        <Circle />
       </Content>
     </Section>
   );

@@ -33,7 +33,7 @@ const Overflow = styled.span`
 const MiddleTitle = styled.span`
   display: block;
 `;
-const WelcomeSectionCircle = () => {
+const Circle = () => {
   return (
     <Wrapper>
       <AbsoluteOverflow>
@@ -61,4 +61,4 @@ const WelcomeSectionCircle = () => {
   );
 };
 
-export default WelcomeSectionCircle;
+export default Circle;
