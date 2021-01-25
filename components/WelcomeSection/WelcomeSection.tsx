@@ -5,7 +5,7 @@ import Circle from "./Circle";
 import Description from "./Description";
 
 const Section = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   font-family: "Monument";
   display: flex;
