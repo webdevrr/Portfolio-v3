@@ -9,9 +9,20 @@ const Section = styled.section`
   align-items: center;
   position: relative;
 `;
-
+const Projects = styled.div`
+  width: 70%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+const Title = styled.h1``;
 const ProjectsSection = () => {
-  return <Section></Section>;
+  return (
+    <Section>
+      <Projects></Projects>
+    </Section>
+  );
 };
 
 export default ProjectsSection;

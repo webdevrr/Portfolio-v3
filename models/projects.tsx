@@ -117,7 +117,7 @@ const projects: Project[] = [
 ];
 export default projects;
 
-interface Project {
+export interface Project {
   index: number;
   fontColor: string;
   backgroundColor: string;
