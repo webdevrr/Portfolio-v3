@@ -3,7 +3,7 @@ import steelseriesLogo from "../public/images/steelseries-logo.png";
 import loginLogo from "../public/images/login-logo.png";
 import pathLogo from "../public/images/path-logo.png";
 
-const projects = [
+const projects: Project[] = [
   {
     index: 0,
     fontColor: "#cb4b16",
@@ -116,3 +116,20 @@ const projects = [
   },
 ];
 export default projects;
+
+interface Project {
+  index: number;
+  fontColor: string;
+  backgroundColor: string;
+  font: string;
+  logo?: any;
+  name: string;
+  description: string;
+  type: string;
+  techStack?: string[] | null;
+  links?: Link[] | null;
+}
+export interface Link {
+  link: string;
+  text: string;
+}
