@@ -7,18 +7,37 @@ const description = [
   "contact me down below!",
 ];
 
-const Wrapper = styled.div``;
-const Paragraph = styled.p``;
-const Overflow = styled.span``;
-const Row = styled.span``;
+const Wrapper = styled.div`
+  position: absolute;
+  left: 20%;
+  bottom: 15%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+`;
+const Paragraph = styled.p`
+  display: flex;
+  flex-direction: column;
+`;
+const Overflow = styled.span`
+  overflow: hidden;
+`;
+const Row = styled.span`
+  display: block;
+`;
+
 const Description = () => {
   return (
     <Wrapper>
       <Paragraph>
-        {description.map((line) => {
-          <Overflow>
-            <Row></Row>
-          </Overflow>;
+        {description.map((line, index) => {
+          return (
+            <Overflow key={index}>
+              <Row>{line}</Row>
+            </Overflow>
+          );
         })}
       </Paragraph>
     </Wrapper>
