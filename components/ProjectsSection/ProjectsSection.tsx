@@ -1,8 +1,6 @@
 import Sticky from "./Sticky";
 import styled from "styled-components";
 import { useState } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 const Section = styled.section`
   width: 100%;
