@@ -1,6 +1,6 @@
 import Sticky from "./Sticky";
 import styled from "styled-components";
-import React, { useRef, useEffect } from "react";
+import { useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -11,11 +11,10 @@ const Section = styled.section`
   display: flex;
 `;
 const ProjectsSection = () => {
-  const stickyRef = useRef<HTMLDivElement>(null);
-
+  const [sticky, setSticky] = useState(false);
   return (
     <Section>
-      <Sticky ref={stickyRef} />
+      <Sticky sticky={sticky} />
     </Section>
   );
 };
