@@ -1,6 +1,9 @@
 import Sticky from "./Sticky";
 import styled from "styled-components";
-import { useState } from "react";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const Section = styled.section`
   width: 100%;
@@ -8,12 +11,17 @@ const Section = styled.section`
   font-family: "Monument";
   display: flex;
 `;
+
 const ProjectsSection = () => {
-  const [sticky, setSticky] = useState(false);
+  const stickyRef = useRef(null);
+
+  useEffect(() => {
+    ScrollTrigger.create({ markers: true });
+  }, []);
 
   return (
     <Section>
-      <Sticky sticky={sticky} />
+      <Sticky ref={stickyRef} />
     </Section>
   );
 };
