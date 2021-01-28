@@ -1,15 +1,10 @@
-import nbaLogo from "../public/images/nba-logo.png";
-import steelseriesLogo from "../public/images/steelseries-logo.png";
-import loginLogo from "../public/images/login-logo.png";
-import pathLogo from "../public/images/path-logo.png";
-
 const projects: Project[] = [
   {
     index: 0,
     fontColor: "#cb4b16",
     backgroundColor: "white",
     font: "Replica ProTT Heavy",
-    logo: nbaLogo,
+    logo: "",
     name: " Headshots API",
     description:
       "Web scrapper of NBA offical Headshots from stats.nba.com using Puppeteer, MongodDB and deployed to Google app engine.",
@@ -50,7 +45,7 @@ const projects: Project[] = [
     fontColor: "white",
     backgroundColor: "black",
     font: "Roboto",
-    logo: loginLogo,
+    logo: "",
     name: "Login Boilerplate",
     description:
       "Simple NodeJS API for user authentication and registration with react-bootstrap on client side. Regsiter and login forms have all necessary validators on backend and frontend, JWT handles user email confirmation and user session together with Redux. ",
@@ -81,7 +76,7 @@ const projects: Project[] = [
     fontColor: "#005BFF",
     backgroundColor: "#0095FF",
     font: "Roboto",
-    logo: pathLogo,
+    logo: "",
     name: "Path Finder",
     description:
       "Pathfinding algorithms visualizer made in React and JS, so far only one algorithm added (Dijkstra's algorithm).",
@@ -100,7 +95,7 @@ const projects: Project[] = [
     fontColor: "black",
     backgroundColor: "#F9C328",
     font: "Replica ProTT Heavy",
-    logo: steelseriesLogo,
+    logo: "",
     name: "ARCTIS 3",
     description:
       "Steelseries Arctis 3 advertisement page, with GSAP animations.",
