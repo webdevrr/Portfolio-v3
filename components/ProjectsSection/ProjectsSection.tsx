@@ -1,4 +1,4 @@
-import Sticky from "./Sticky";
+import ProjectDescription from "./ProjectDescription";
 import styled from "styled-components";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
@@ -16,12 +16,12 @@ const ProjectsSection = () => {
   const stickyRef = useRef(null);
 
   useEffect(() => {
-    ScrollTrigger.create({ markers: true });
+    // ScrollTrigger.create({ markers: true });
   }, []);
 
   return (
     <Section>
-      <Sticky ref={stickyRef} />
+      <ProjectDescription ref={stickyRef} />
     </Section>
   );
 };

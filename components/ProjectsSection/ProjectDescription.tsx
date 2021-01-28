@@ -6,8 +6,8 @@ const Section = styled.div`
   height: 100vh;
 `;
 
-const Sticky = forwardRef<HTMLDivElement>((props, ref) => {
+const ProjectDescription = forwardRef<HTMLDivElement>((props, ref) => {
   return <Section ref={ref}></Section>;
 });
 
-export default Sticky;
+export default ProjectDescription;
