@@ -10,6 +10,7 @@ const Section = styled.section`
 `;
 const ProjectsSection = () => {
   const [sticky, setSticky] = useState(false);
+
   return (
     <Section>
       <Sticky sticky={sticky} />

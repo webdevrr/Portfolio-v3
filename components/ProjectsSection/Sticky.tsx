@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { forwardRef } from "react";
 interface Props {
   sticky: boolean;
 }
@@ -11,8 +11,8 @@ const Section = styled.div<Props>`
   left: 0;
 `;
 
-const Sticky = ({ sticky }: Props) => {
-  return <Section sticky={sticky}></Section>;
-};
+const Sticky = forwardRef<HTMLDivElement, Props>(({ sticky }: Props, ref) => {
+  return <Section ref={ref} sticky={sticky}></Section>;
+});
 
 export default Sticky;
