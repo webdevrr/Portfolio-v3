@@ -1,11 +1,13 @@
-import ProjectDescription from "./ProjectDescription";
-import ScrollingTypography from "./ScrollingTypography";
-import projects from "../../models/projects";
 import styled from "styled-components";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+
+import projects from "../../models/projects";
+
+import ProjectDescription from "./ProjectDescription";
+import ScrollingTypography from "./ScrollingTypography";
 
 const Section = styled.section`
   width: 100%;
