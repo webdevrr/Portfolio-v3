@@ -21,7 +21,8 @@ const ProjectsSection = () => {
     ScrollTrigger.create({
       markers: true,
       trigger: sectionRef.current,
-      start: "top 10%",
+      start: "top",
+      endTrigger: "bottom bottom",
       pin: projectDescRef.current,
     });
   }, []);
