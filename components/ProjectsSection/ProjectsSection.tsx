@@ -24,7 +24,7 @@ const ProjectsSection = () => {
       markers: true,
       trigger: sectionRef.current,
       start: "top",
-      endTrigger: "bottom bottom",
+      endTrigger: "bottom",
       pin: projectDescRef.current,
     });
   }, []);
