@@ -17,20 +17,25 @@ const Section = styled.section`
 
 const ProjectsSection = () => {
   const projectDescRef = useRef(null);
-  const sectionRef = useRef(null);
+  const projectsSectionRef = useRef(null);
 
   useEffect(() => {
     ScrollTrigger.create({
       markers: true,
-      trigger: sectionRef.current,
-      start: "top",
-      endTrigger: "bottom",
+      trigger: projectsSectionRef.current,
+      start: "top top",
+      end: "bottom bottom",
       pin: projectDescRef.current,
     });
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        t.kill();
+      });
+    };
   }, []);
 
   return (
-    <Section ref={sectionRef}>
+    <Section ref={projectsSectionRef}>
       <ProjectDescription ref={projectDescRef} />
       <ScrollingTypography projects={projects} />
     </Section>
