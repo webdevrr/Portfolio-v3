@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import ProjectDescription from "./ProjectDescription";
 import Paralax from "./Paralax";
+
+import projects from "../../models/projects";
 
 const Section = styled.section`
   width: 100%;
@@ -16,12 +18,13 @@ const Section = styled.section`
 const ProjectsSection = () => {
   const projectDescRef = useRef(null);
   const projectsSectionRef = useRef(null);
+  const [project, setProject] = useState(projects[1]);
 
   useEffect(() => {
     ScrollTrigger.create({
       markers: true,
       trigger: projectsSectionRef.current,
-      start: "top top",
+      start: "top",
       end: "bottom bottom",
       pin: projectDescRef.current,
     });
@@ -34,7 +37,7 @@ const ProjectsSection = () => {
 
   return (
     <Section ref={projectsSectionRef}>
-      <ProjectDescription ref={projectDescRef} />
+      <ProjectDescription project={project} ref={projectDescRef} />
       <Paralax />
     </Section>
   );
