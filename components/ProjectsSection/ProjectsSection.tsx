@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import ProjectDescription from "./ProjectDescription";
-import ScrollingTypography from "./ScrollingTypography";
+import Paralax from "./Paralax";
 
 const Section = styled.section`
   width: 100%;
@@ -35,7 +35,7 @@ const ProjectsSection = () => {
   return (
     <Section ref={projectsSectionRef}>
       <ProjectDescription ref={projectDescRef} />
-      <ScrollingTypography />
+      <Paralax />
     </Section>
   );
 };

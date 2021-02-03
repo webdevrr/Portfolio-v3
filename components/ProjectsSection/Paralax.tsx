@@ -7,8 +7,8 @@ const Section = styled.div`
   width: 50%;
 `;
 
-const ScrollingTypography = () => {
+const Paralax = () => {
   return <Section></Section>;
 };
 
-export default ScrollingTypography;
+export default Paralax;
