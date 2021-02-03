@@ -11,8 +11,9 @@ import projects from "../../models/projects";
 
 const Section = styled.section`
   width: 100%;
-  font-family: "Monument";
+  font-family: "Roboto";
   display: flex;
+  color: white;
 `;
 
 const ProjectsSection = () => {
