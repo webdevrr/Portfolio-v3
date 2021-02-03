@@ -4,8 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-import projects from "../../models/projects";
-
 import ProjectDescription from "./ProjectDescription";
 import ScrollingTypography from "./ScrollingTypography";
 
@@ -37,7 +35,7 @@ const ProjectsSection = () => {
   return (
     <Section ref={projectsSectionRef}>
       <ProjectDescription ref={projectDescRef} />
-      <ScrollingTypography projects={projects} />
+      <ScrollingTypography />
     </Section>
   );
 };
