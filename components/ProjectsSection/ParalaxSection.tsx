@@ -1,14 +1,21 @@
 import styled from "styled-components";
 
+import ParalaxItem from "./ParalaxItem";
+
 import projects from "../../models/projects";
 
 const Section = styled.div`
-  height: ${projects.length * 150}vh;
   width: 50%;
 `;
 
 const ParalaxSection = () => {
-  return <Section></Section>;
+  return (
+    <Section>
+      {projects.map((project) => (
+        <ParalaxItem />
+      ))}
+    </Section>
+  );
 };
 
 export default ParalaxSection;

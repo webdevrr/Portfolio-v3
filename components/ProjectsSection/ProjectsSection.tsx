@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import ProjectDescription from "./ProjectDescription";
-import Paralax from "./Paralax";
+import ParalaxSection from "./ParalaxSection";
 
 import projects from "../../models/projects";
 
@@ -49,7 +49,7 @@ const ProjectsSection = () => {
         project={project}
         ref={projectDescRef}
       />
-      <Paralax />
+      <ParalaxSection />
     </Section>
   );
 };
