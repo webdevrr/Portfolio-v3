@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { forwardRef } from "react";
 
 import ParalaxItem from "./ParalaxItem";
 
@@ -8,14 +9,14 @@ const Section = styled.div`
   width: 50%;
 `;
 
-const ParalaxSection = () => {
+const ParalaxSection = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <Section>
+    <Section ref={ref}>
       {projects.map((project) => (
         <ParalaxItem />
       ))}
     </Section>
   );
-};
+});
 
 export default ParalaxSection;
