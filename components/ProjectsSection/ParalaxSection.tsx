@@ -13,7 +13,7 @@ const ParalaxSection = forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <Section ref={ref}>
       {projects.map((project) => (
-        <ParalaxItem />
+        <ParalaxItem key={project.name} />
       ))}
     </Section>
   );
