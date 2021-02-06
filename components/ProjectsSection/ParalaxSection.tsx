@@ -7,8 +7,8 @@ const Section = styled.div`
   width: 50%;
 `;
 
-const Paralax = () => {
+const ParalaxSection = () => {
   return <Section></Section>;
 };
 
-export default Paralax;
+export default ParalaxSection;

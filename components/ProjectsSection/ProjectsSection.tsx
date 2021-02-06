@@ -19,6 +19,7 @@ const Section = styled.section`
 const ProjectsSection = () => {
   const projectDescRef = useRef<HTMLDivElement>(null);
   const projectsSectionRef = useRef<HTMLElement>(null);
+
   const [project, setProject] = useState(projects[1]);
   const [isContentVisible, setIsContentVisible] = useState(false);
 
