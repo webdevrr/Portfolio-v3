@@ -43,6 +43,10 @@ const ProjectsSection = () => {
     };
   }, []);
 
+  const changeProject = (index: number) => {
+    setProject(project[index]);
+  };
+
   return (
     <Section>
       <ProjectDescription
@@ -50,7 +54,7 @@ const ProjectsSection = () => {
         project={project}
         ref={projectDescRef}
       />
-      <ParalaxSection ref={paralaxSectionRef} />
+      <ParalaxSection changeProject={changeProject} ref={paralaxSectionRef} />
     </Section>
   );
 };
