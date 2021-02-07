@@ -6,10 +6,13 @@ interface Props {
 }
 const Wrapper = styled.div`
   align-self: flex-start;
+  position: relative;
 `;
 const Box = styled.div`
   position: absolute;
   background-color: white;
+  width: 100%;
+  height: 100%;
 `;
 const AnimatedWrapper = forwardRef<HTMLDivElement, Props>(
   ({ children }, ref) => {

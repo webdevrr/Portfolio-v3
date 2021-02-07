@@ -10,6 +10,7 @@ interface Props {
 }
 const Section = styled.div`
   display: flex;
+  color: white;
   flex-direction: column;
   padding: 5% 5% 5% 5%;
   width: 50%;
@@ -22,15 +23,18 @@ const Flex = styled.div`
   padding-left: 5%;
 `;
 const Number = styled.h2`
-  transform: scaleX(0);
+  z-index: 50;
+  opacity: 0;
   font-size: 30px;
   display: inline-block;
 `;
 
 const Name = styled.h1`
+  opacity: 0;
   font-size: 50px;
 `;
 const Description = styled.p`
+  opacity: 0;
   line-height: 1.5em;
 `;
 const ProjectDescription = forwardRef<HTMLDivElement, Props>(
@@ -42,23 +46,38 @@ const ProjectDescription = forwardRef<HTMLDivElement, Props>(
     const nameWrapperRef = useRef(null);
     const descWrapperRef = useRef(null);
 
-    const tl = gsap.timeline();
-
     useLayoutEffect(() => {
-      if (numberWrapperRef.current) {
-        console.log(numberWrapperRef.current);
-        tl.fromTo(
-          [
-            numberWrapperRef.current,
-            nameWrapperRef.current,
-            descWrapperRef.current,
-          ],
-          {
-            transformOrigin: "left center",
-            scaleX: 0,
-          },
-          { scaleX: 1, duration: 0.5 }
-        );
+      let tl = gsap.timeline();
+
+      if (numberWrapperRef.current || numberRef.current) {
+        tl.to([numberRef.current, nameRef.current, descriptionRef.current], {
+          opacity: 0,
+          duration: 0,
+        })
+          .fromTo(
+            [
+              numberWrapperRef.current,
+              nameWrapperRef.current,
+              descWrapperRef.current,
+            ],
+            {
+              transformOrigin: "left center",
+              scaleX: 0,
+            },
+            { scaleX: 1, duration: 0.25 }
+          )
+          .to([numberRef.current, nameRef.current, descriptionRef.current], {
+            opacity: 1,
+            duration: 0,
+          })
+          .to(
+            [
+              numberWrapperRef.current,
+              nameWrapperRef.current,
+              descWrapperRef.current,
+            ],
+            { transformOrigin: "right center", scaleX: 0 }
+          );
       }
       return () => tl.kill();
     }, [project]);
@@ -68,14 +87,16 @@ const ProjectDescription = forwardRef<HTMLDivElement, Props>(
         {project ? (
           <>
             <AnimatedWrapper ref={numberWrapperRef}>
-              <Number>{`0${project.index}`}</Number>
+              <Number ref={numberRef}>{`0${project.index}`}</Number>
             </AnimatedWrapper>
             <Flex>
               <AnimatedWrapper ref={nameWrapperRef}>
-                <Name>{project.name}</Name>
+                <Name ref={nameRef}>{project.name}</Name>
               </AnimatedWrapper>
               <AnimatedWrapper ref={descWrapperRef}>
-                <Description>{project.description}</Description>
+                <Description ref={descriptionRef}>
+                  {project.description}
+                </Description>
               </AnimatedWrapper>
             </Flex>
           </>
