@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 import { forwardRef } from "react";
 import { Project } from "../../models/projects";
@@ -25,16 +25,13 @@ const Number = styled.h2`
   transform: scaleX(0);
   font-size: 30px;
   display: inline-block;
-  visibility: hidden;
 `;
 
 const Name = styled.h1`
   font-size: 50px;
-  visibility: hidden;
 `;
 const Description = styled.p`
   line-height: 1.5em;
-  visibility: hidden;
 `;
 const ProjectDescription = forwardRef<HTMLDivElement, Props>(
   ({ project }, ref) => {
@@ -47,7 +44,7 @@ const ProjectDescription = forwardRef<HTMLDivElement, Props>(
 
     const tl = gsap.timeline();
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (numberWrapperRef.current) {
         console.log(numberWrapperRef.current);
         tl.fromTo(
