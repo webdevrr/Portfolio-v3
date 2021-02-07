@@ -23,8 +23,8 @@ const ParalaxItem = ({ changeProject, id }: Props) => {
       id: `item-${id}`,
       onEnter: () => changeProject(id),
       onEnterBack: () => changeProject(id),
-      start: "top center",
-      end: "bottom center",
+      start: "top top",
+      end: "bottom top",
     });
 
     return () => {

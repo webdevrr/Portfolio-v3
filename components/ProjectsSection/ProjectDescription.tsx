@@ -1,10 +1,10 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { forwardRef } from "react";
 import { Project } from "../../models/projects";
 
 interface Props {
   project: Project;
-  isContentVisible: boolean;
 }
 const Section = styled.div`
   padding: 5% 5% 5% 5%;
@@ -30,19 +30,16 @@ const Description = styled.p`
   line-height: 1.5em;
 `;
 const ProjectDescription = forwardRef<HTMLDivElement, Props>(
-  ({ project, isContentVisible }, ref) => {
+  ({ project }, ref) => {
     const { index, name, description } = project;
+
     return (
       <Section ref={ref}>
-        {isContentVisible ? (
-          <>
-            <Number>{`0${index}`}</Number>
-            <Flex>
-              <Name>{name}</Name>
-              <Description>{description}</Description>
-            </Flex>
-          </>
-        ) : null}
+        <Number>{`0${index}`}</Number>
+        <Flex>
+          <Name>{name}</Name>
+          <Description>{description}</Description>
+        </Flex>
       </Section>
     );
   }

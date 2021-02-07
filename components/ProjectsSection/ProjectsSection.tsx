@@ -21,16 +21,11 @@ const ProjectsSection = () => {
   const paralaxSectionRef = useRef<HTMLDivElement>(null);
 
   const [project, setProject] = useState(projects[1]);
-  const [isContentVisible, setIsContentVisible] = useState(false);
 
   useEffect(() => {
     ScrollTrigger.create({
       trigger: paralaxSectionRef.current,
       start: "top",
-      onEnter: () => setIsContentVisible(true),
-      onLeaveBack: () => setIsContentVisible(false),
-      onLeave: () => setIsContentVisible(false),
-      onEnterBack: () => setIsContentVisible(true),
       end: "bottom",
       pin: projectDescRef.current,
     });
@@ -48,11 +43,7 @@ const ProjectsSection = () => {
 
   return (
     <Section>
-      <ProjectDescription
-        isContentVisible={isContentVisible}
-        project={project}
-        ref={projectDescRef}
-      />
+      <ProjectDescription project={project} ref={projectDescRef} />
       <ParalaxSection changeProject={changeProject} ref={paralaxSectionRef} />
     </Section>
   );
