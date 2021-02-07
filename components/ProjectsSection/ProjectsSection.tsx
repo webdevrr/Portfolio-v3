@@ -24,9 +24,10 @@ const ProjectsSection = () => {
 
   useEffect(() => {
     ScrollTrigger.create({
+      markers: true,
       trigger: paralaxSectionRef.current,
       start: "top",
-      end: "bottom",
+      end: "bottom bottom",
       pin: projectDescRef.current,
     });
 
