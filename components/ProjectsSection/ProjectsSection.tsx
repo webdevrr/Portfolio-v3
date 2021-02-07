@@ -25,14 +25,13 @@ const ProjectsSection = () => {
 
   useEffect(() => {
     ScrollTrigger.create({
-      markers: true,
       trigger: paralaxSectionRef.current,
       start: "top",
       onEnter: () => setIsContentVisible(true),
       onLeaveBack: () => setIsContentVisible(false),
       onLeave: () => setIsContentVisible(false),
       onEnterBack: () => setIsContentVisible(true),
-      end: "bottom bottom",
+      end: "bottom",
       pin: projectDescRef.current,
     });
 
@@ -44,7 +43,7 @@ const ProjectsSection = () => {
   }, []);
 
   const changeProject = (index: number) => {
-    setProject(project[index]);
+    setProject(projects[index]);
   };
 
   return (
