@@ -18,7 +18,6 @@ const ParalaxItem = ({ changeProject, id }: Props) => {
 
   useEffect(() => {
     ScrollTrigger.create({
-      markers: true,
       trigger: paralaxRef.current,
       id: `item-${id}`,
       onEnter: () => changeProject(id),
