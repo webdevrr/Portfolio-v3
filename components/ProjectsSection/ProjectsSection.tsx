@@ -20,15 +20,17 @@ const ProjectsSection = () => {
   const projectDescRef = useRef<HTMLDivElement>(null);
   const paralaxSectionRef = useRef<HTMLDivElement>(null);
 
-  const [project, setProject] = useState(projects[1]);
+  const [project, setProject] = useState(null);
 
   useEffect(() => {
     ScrollTrigger.create({
       markers: true,
       trigger: paralaxSectionRef.current,
       start: "top",
-      end: "bottom bottom",
+      end: "bottom 5%",
       pin: projectDescRef.current,
+      onLeaveBack: () => setProject(null),
+      onLeave: () => setProject(null),
     });
 
     return () => {

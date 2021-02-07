@@ -37,8 +37,6 @@ const Description = styled.p`
 `;
 const ProjectDescription = forwardRef<HTMLDivElement, Props>(
   ({ project }, ref) => {
-    const { index, name, description } = project;
-    const animate = () => {};
     const numberRef = useRef(null);
     const nameRef = useRef(null);
     const descriptionRef = useRef(null);
@@ -46,30 +44,23 @@ const ProjectDescription = forwardRef<HTMLDivElement, Props>(
     const nameWrapperRef = useRef(null);
     const descWrapperRef = useRef(null);
 
-    useEffect(() => {
-      gsap.fromTo(
-        [
-          numberWrapperRef.current,
-          nameWrapperRef.current,
-          descWrapperRef.current,
-        ],
-        { scaleX: 0 },
-        { scaleX: 1, transformOrigin: "left center" }
-      );
-    });
     return (
       <Section ref={ref}>
-        <AnimatedWrapper ref={numberWrapperRef}>
-          <Number>{`0${index}`}</Number>
-        </AnimatedWrapper>
-        <Flex>
-          <AnimatedWrapper ref={nameWrapperRef}>
-            <Name>{name}</Name>
-          </AnimatedWrapper>
-          <AnimatedWrapper ref={descWrapperRef}>
-            <Description>{description}</Description>
-          </AnimatedWrapper>
-        </Flex>
+        {project ? (
+          <>
+            <AnimatedWrapper ref={numberWrapperRef}>
+              <Number>{project.index}</Number>
+            </AnimatedWrapper>
+            <Flex>
+              <AnimatedWrapper ref={nameWrapperRef}>
+                <Name>{project.name}</Name>
+              </AnimatedWrapper>
+              <AnimatedWrapper ref={descWrapperRef}>
+                <Description>{project.description}</Description>
+              </AnimatedWrapper>
+            </Flex>
+          </>
+        ) : null}
       </Section>
     );
   }
