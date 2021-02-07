@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 import { forwardRef } from "react";
 import { Project } from "../../models/projects";
@@ -22,6 +22,7 @@ const Flex = styled.div`
   padding-left: 5%;
 `;
 const Number = styled.h2`
+  transform: scaleX(0);
   font-size: 30px;
   display: inline-block;
   visibility: hidden;
@@ -44,12 +45,30 @@ const ProjectDescription = forwardRef<HTMLDivElement, Props>(
     const nameWrapperRef = useRef(null);
     const descWrapperRef = useRef(null);
 
+    const tl = gsap.timeline();
+    useLayoutEffect(() => {
+      if (numberWrapperRef.current) {
+        console.log(numberWrapperRef.current);
+        tl.fromTo(
+          [
+            numberWrapperRef.current,
+            nameWrapperRef.current,
+            descWrapperRef.current,
+          ],
+          {
+            transformOrigin: "left center",
+            scaleX: 0,
+          },
+          { scaleX: 1, duration: 0.5 }
+        );
+      }
+    }, [project]);
     return (
       <Section ref={ref}>
         {project ? (
           <>
             <AnimatedWrapper ref={numberWrapperRef}>
-              <Number>{project.index}</Number>
+              <Number>{`0${project.index}`}</Number>
             </AnimatedWrapper>
             <Flex>
               <AnimatedWrapper ref={nameWrapperRef}>
