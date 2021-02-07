@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 import { forwardRef } from "react";
 import { Project } from "../../models/projects";
@@ -47,7 +47,7 @@ const ProjectDescription = forwardRef<HTMLDivElement, Props>(
 
     const tl = gsap.timeline();
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (numberWrapperRef.current) {
         console.log(numberWrapperRef.current);
         tl.fromTo(
