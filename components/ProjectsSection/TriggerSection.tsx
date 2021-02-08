@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { forwardRef } from "react";
 
-import ParalaxItem from "./ParalaxItem";
+import TriggerItem from "./TriggerItem";
 
 import projects from "../../models/projects";
 
@@ -12,12 +12,12 @@ const Section = styled.div`
   width: 50%;
 `;
 
-const ParalaxSection = forwardRef<HTMLDivElement, Props>(
+const TriggerSection = forwardRef<HTMLDivElement, Props>(
   ({ changeProject }: Props, ref) => {
     return (
       <Section ref={ref}>
         {projects.map((project, id) => (
-          <ParalaxItem
+          <TriggerItem
             key={project.name}
             changeProject={changeProject}
             id={id}
@@ -28,4 +28,4 @@ const ParalaxSection = forwardRef<HTMLDivElement, Props>(
   }
 );
 
-export default ParalaxSection;
+export default TriggerSection;

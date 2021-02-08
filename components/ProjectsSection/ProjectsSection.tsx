@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import ProjectDescription from "./ProjectDescription";
-import ParalaxSection from "./ParalaxSection";
+import TriggerSection from "./TriggerSection";
 
 import projects from "../../models/projects";
 
@@ -18,14 +18,14 @@ const Section = styled.section`
 
 const ProjectsSection = () => {
   const projectDescRef = useRef<HTMLDivElement>(null);
-  const paralaxSectionRef = useRef<HTMLDivElement>(null);
+  const triggerSectionRef = useRef<HTMLDivElement>(null);
 
   const [project, setProject] = useState(null);
 
   useEffect(() => {
     ScrollTrigger.create({
       markers: true,
-      trigger: paralaxSectionRef.current,
+      trigger: triggerSectionRef.current,
       start: "top",
       end: "bottom 5%",
       pin: projectDescRef.current,
@@ -47,7 +47,7 @@ const ProjectsSection = () => {
   return (
     <Section>
       <ProjectDescription project={project} ref={projectDescRef} />
-      <ParalaxSection changeProject={changeProject} ref={paralaxSectionRef} />
+      <TriggerSection changeProject={changeProject} ref={triggerSectionRef} />
     </Section>
   );
 };
