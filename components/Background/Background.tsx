@@ -8,7 +8,7 @@ const Background = () => {
         <pointLight position={[10, 10, 10]} />
         <mesh>
           <boxBufferGeometry />
-          <meshStandardMaterial color="yellow" />
+          <meshStandardMaterial color="#1b1b1d" />
         </mesh>
       </Canvas>
     </>
