@@ -2,12 +2,13 @@ import { Canvas } from "react-three-fiber";
 import Box from "./Box";
 import { calculatePositionsOnCircle } from "../../utils/helpers";
 import { OrbitControls, useHelper } from "@react-three/drei";
+import projects from "../../models/projects";
 
 const Background = () => {
   return (
     <>
       <Canvas style={{ position: "fixed", backgroundColor: "#1b1b1d" }}>
-        {calculatePositionsOnCircle(6, 5).map((coords, index) => {
+        {calculatePositionsOnCircle(projects.length, 5).map((coords, index) => {
           return <Box position={[coords[0], 1, coords[1]]} key={index} />;
         })}
         <gridHelper args={[30, 30, 30]} />
