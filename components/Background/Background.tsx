@@ -1,14 +1,16 @@
 import { useEffect } from "react";
-import { Canvas } from "react-three-fiber";
+import { Canvas, extend } from "react-three-fiber";
 import Box from "./Box";
 import { calculatePositionsOnCircle } from "../../utils/helpers";
-
+import { OrbitControls } from "@react-three/drei";
 const Background = () => {
-  console.log(calculatePositionsOnCircle(2, 12));
   return (
     <>
       <Canvas style={{ position: "fixed", backgroundColor: "#1b1b1d" }}>
-        <Box />
+        {calculatePositionsOnCircle(4, 1).map((coords, index) => {
+          return <Box position={[...coords, 0]} key={index} />;
+        })}
+        <OrbitControls />
       </Canvas>
     </>
   );

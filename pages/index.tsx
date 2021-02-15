@@ -17,9 +17,9 @@ export default function Home() {
       <Header />
       <Main>
         <Background />
-        <WelcomeSection />
+        {/* <WelcomeSection />
         <ProjectsSection />
-        <ContactSection />
+        <ContactSection /> */}
       </Main>
     </>
   );
