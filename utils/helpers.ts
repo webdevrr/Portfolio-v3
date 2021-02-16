@@ -8,7 +8,7 @@ export const calculatePositionsOnCircle = (
     var x = radius * Math.cos((2 * Math.PI * i) / numberOfPoints);
     var y = radius * Math.sin((2 * Math.PI * i) / numberOfPoints);
 
-    positions.push([x, y]);
+    positions.push([x, 1, y]);
   }
   return positions;
 };
