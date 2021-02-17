@@ -1,19 +1,31 @@
 import Side from "./Side";
-interface Props {}
-interface Side {
-  position: [number, number, number];
-  rotation: [number, number, number];
+interface Props {
+  boxSize: numberArray;
 }
-const sides: Side[] = [
-  { position: [0, 0, 0.25], rotation: [0, 0, 0] },
-  { position: [0, 0.25, 0], rotation: [Math.PI / 2, 0, 0] },
-  { position: [0.25, 0, 0], rotation: [0, Math.PI / 2, 0] },
-];
+interface Side {
+  position: numberArray;
+  rotation: numberArray;
+}
+type numberArray = [number, number, number];
+
 const QuarterBox = (props: Props) => {
+  const { boxSize } = props;
+  const boxDimension = boxSize[0];
+  const sides: Side[] = [
+    { position: [0, 0, boxDimension / 4], rotation: [0, 0, 0] },
+    { position: [0, boxDimension / 4, 0], rotation: [Math.PI / 2, 0, 0] },
+    { position: [boxDimension / 4, 0, 0], rotation: [0, Math.PI / 2, 0] },
+  ];
   return (
     <group {...props}>
       {sides.map((side) => {
-        return <Side position={side.position} rotation={side.rotation} />;
+        return (
+          <Side
+            size={boxSize}
+            position={side.position}
+            rotation={side.rotation}
+          />
+        );
       })}
     </group>
   );
