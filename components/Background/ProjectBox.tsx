@@ -13,10 +13,10 @@ const ProjectBox = (props: Props) => {
 
   return (
     <group ref={group} {...props}>
-      <mesh>
+      {/* <mesh>
         <boxGeometry />
         <meshStandardMaterial color="blue" />
-      </mesh>
+      </mesh> */}
       <QuarterBox />
     </group>
   );

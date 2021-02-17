@@ -1,16 +1,19 @@
 import Side from "./Side";
 interface Props {}
-const sides = [
-  { position: { x: 0.6, y: 0.6, z: 0.6 } },
-
-  // { x, y, z, rotation },
-  // { x, y, z, rotation },
+interface Side {
+  position: [number, number, number];
+  rotation: [number, number, number];
+}
+const sides: Side[] = [
+  { position: [0, 0, 0], rotation: [0, 0, 0] },
+  { position: [0, 0, 0], rotation: [0, 0, 0] },
+  { position: [0, 0, 0], rotation: [0, 0, 0] },
 ];
 const QuarterBox = (props: Props) => {
   return (
     <group {...props}>
-      {sides.map(() => {
-        return <Side />;
+      {sides.map((side) => {
+        return <Side position={side.position} rotation={side.rotation} />;
       })}
     </group>
   );

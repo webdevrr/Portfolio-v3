@@ -1,10 +1,13 @@
 import { DoubleSide } from "three";
-interface Props {}
+interface Props {
+  position: [number, number, number];
+  rotation: [number, number, number];
+}
 
-const Side = (props: Props) => {
+const Side = ({ position, rotation }: Props) => {
   return (
-    <mesh>
-      <planeGeometry args={[2, 2]} />
+    <mesh rotation={rotation} position={position}>
+      <planeGeometry args={[0.5, 0.5]} />
       <meshStandardMaterial side={DoubleSide} color="green" />
     </mesh>
   );
