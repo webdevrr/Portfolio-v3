@@ -1,5 +1,6 @@
-import React from "react";
-
+import { useRef } from "react";
+import { useHelper } from "@react-three/drei";
+import { BoxHelper } from "three";
 import QuarterBox from "./QuarterBox";
 
 interface Props {
@@ -7,13 +8,16 @@ interface Props {
 }
 
 const ProjectBox = (props: Props) => {
+  const group = useRef();
+  useHelper(group, BoxHelper, "red");
+
   return (
-    <group>
-      {/* <mesh {...props}>
+    <group ref={group} {...props}>
+      <mesh>
         <boxGeometry />
-        <meshStandardMaterial color="pink" />
-      </mesh> */}
-      <QuarterBox position={props.position} />
+        <meshStandardMaterial color="blue" />
+      </mesh>
+      <QuarterBox />
     </group>
   );
 };

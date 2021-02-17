@@ -1,16 +1,18 @@
-import React from "react";
-import { DoubleSide } from "three";
+import Side from "./Side";
+interface Props {}
+const sides = [
+  { position: { x: 0.6, y: 0.6, z: 0.6 } },
 
-interface Props {
-  position: any;
-}
-
+  // { x, y, z, rotation },
+  // { x, y, z, rotation },
+];
 const QuarterBox = (props: Props) => {
   return (
-    <mesh {...props}>
-      <planeGeometry args={[3, 3]} />
-      <meshStandardMaterial side={DoubleSide} color="white" />
-    </mesh>
+    <group {...props}>
+      {sides.map(() => {
+        return <Side />;
+      })}
+    </group>
   );
 };
 
