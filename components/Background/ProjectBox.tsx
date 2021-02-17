@@ -1,27 +1,11 @@
-import { useRef } from "react";
-import { useHelper } from "@react-three/drei";
-import { BoxHelper } from "three";
+import React from "react";
 import QuarterBox from "./QuarterBox";
-
 interface Props {
-  position: any;
   boxSize: [number, number, number];
 }
 
-const ProjectBox = (props: Props) => {
-  const group = useRef();
-  useHelper(group, BoxHelper, "red");
-  const { boxSize } = props;
-
-  return (
-    <group ref={group} {...props}>
-      <mesh>
-        <boxGeometry args={boxSize} />
-        <meshStandardMaterial color="blue" />
-      </mesh>
-      <QuarterBox boxSize={boxSize} />
-    </group>
-  );
+const ProjectBox = ({ boxSize }: Props) => {
+  return <QuarterBox boxSize={boxSize} />;
 };
 
 export default ProjectBox;
