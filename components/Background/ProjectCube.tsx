@@ -5,21 +5,22 @@ import ProjectBox from "./ProjectBox";
 
 interface Props {
   position: any;
-  boxSize: [number, number, number];
+  cubeDimensions: [number, number, number];
 }
 
 const ProjectCube = (props: Props) => {
   const group = useRef();
   useHelper(group, BoxHelper, "red");
-  const { boxSize } = props;
+  const { cubeDimensions, position } = props;
+  const cubeDimension = cubeDimensions[0];
 
   return (
-    <group ref={group} {...props}>
+    <group ref={group} position={position}>
       <mesh>
-        <boxGeometry args={boxSize} />
-        <meshStandardMaterial transparent={true} opacity={0} />
+        <boxGeometry args={cubeDimensions} />
+        <meshStandardMaterial transparent={true} opacity={0.5} />
       </mesh>
-      <ProjectBox boxSize={boxSize} />
+      <ProjectBox cubeDimension={cubeDimension} />
     </group>
   );
 };

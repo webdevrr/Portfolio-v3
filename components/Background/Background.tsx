@@ -4,7 +4,7 @@ import { calculatePositionsOnCircle } from "../../utils/helpers";
 import { OrbitControls } from "@react-three/drei";
 import projects from "../../models/projects";
 ///[width,height,depth] - all should be proportional
-const boxSize: [number, number, number] = [1, 1, 1];
+const cubeDimensions: [number, number, number] = [1, 1, 1];
 
 const Background = () => {
   return (
@@ -13,7 +13,11 @@ const Background = () => {
         <ambientLight />
         {calculatePositionsOnCircle(projects.length, 5).map((coords, index) => {
           return (
-            <ProjectCube boxSize={boxSize} position={coords} key={index} />
+            <ProjectCube
+              cubeDimensions={cubeDimensions}
+              position={coords}
+              key={index}
+            />
           );
         })}
         <gridHelper args={[30, 30, 30]} />
