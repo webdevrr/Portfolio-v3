@@ -15,10 +15,10 @@ const ProjectCube = (props: Props) => {
 
   return (
     <group ref={group} {...props}>
-      {/* <mesh>
+      <mesh>
         <boxGeometry args={boxSize} />
-        <meshStandardMaterial color="blue" />
-      </mesh> */}
+        <meshStandardMaterial transparent={true} opacity={0} />
+      </mesh>
       <ProjectBox boxSize={boxSize} />
     </group>
   );
