@@ -7,11 +7,9 @@ interface Props {
 type numberArray = [number, number, number];
 
 const Side = ({ position, rotation, quarterBoxDimension }: Props) => {
-  const sideDimension = quarterBoxDimension * 2;
-
   return (
     <mesh rotation={rotation} position={position}>
-      <planeGeometry args={[sideDimension, sideDimension]} />
+      <planeGeometry args={[quarterBoxDimension, quarterBoxDimension]} />
       <meshStandardMaterial side={DoubleSide} color="green" />
     </mesh>
   );

@@ -16,12 +16,18 @@ const ProjectBox = ({ cubeDimension }: Props) => {
       position: [distanceFromCenter, distanceFromCenter, distanceFromCenter],
       rotation: [0, 0, 0],
     },
-    // {
-    //   position: [distanceFromCenter, distanceFromCenter, -distanceFromCenter],
-    //   rotation: [0, Math.PI / 2, 0],
-    // },
-    // { position: [0, 0, 0], rotation: [0, 0, 0] },
-    // { position: [0, 0, 0], rotation: [0, 0, 0] },
+    {
+      position: [distanceFromCenter, distanceFromCenter, -distanceFromCenter],
+      rotation: [0, Math.PI / 2, 0],
+    },
+    {
+      position: [-distanceFromCenter, distanceFromCenter, distanceFromCenter],
+      rotation: [0, 0, Math.PI / 2],
+    },
+    {
+      position: [-distanceFromCenter, distanceFromCenter, -distanceFromCenter],
+      rotation: [-Math.PI / 2, 0, Math.PI / 2],
+    },
   ];
   return (
     <>
