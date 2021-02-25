@@ -7,8 +7,7 @@ import Background from "../components/Background/Background";
 import Header from "../components/Header";
 
 const Main = styled.main`
-  /* background-color: #1b1b1d; */
-  background-color: transparent;
+  background-color: #1b1b1d;
 `;
 
 export default function Home() {
@@ -16,10 +15,9 @@ export default function Home() {
     <>
       <Header />
       <Main>
-        <Background />
-        {/* <WelcomeSection />
+        <WelcomeSection />
         <ProjectsSection />
-        <ContactSection /> */}
+        <ContactSection />
       </Main>
     </>
   );
