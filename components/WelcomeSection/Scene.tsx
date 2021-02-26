@@ -40,6 +40,7 @@ const Scene = (props: Props) => {
       0.2
     );
   });
+
   const [{ wobble, coat, color, ambient, env }] = useSpring(
     {
       wobble: down ? 1.2 : hovered ? 1.05 : 1,
@@ -74,7 +75,6 @@ const Scene = (props: Props) => {
           onPointerDown={() => setDown(true)}
           onPointerUp={() => {
             setDown(false);
-            // Toggle mode between dark and bright
             setMode(!mode);
           }}
         >
@@ -87,7 +87,7 @@ const Scene = (props: Props) => {
             metalness={0.1}
           />
         </a.mesh>
-        <Environment preset="warehouse" />
+        <Environment preset="lobby" />
         <ContactShadows
           rotation={[Math.PI / 2, 0, 0]}
           position={[0, -1.6, 0]}

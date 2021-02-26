@@ -17,7 +17,10 @@ const WelcomeSection = () => {
   return (
     <Section>
       <Invitation />
-      <Canvas pixelRatio={[1, 2]} style={{ width: "50%" }}>
+      <Canvas
+        pixelRatio={[1, 2]}
+        style={{ width: "50%", backgroundColor: "transparent" }}
+      >
         <Scene />
         <OrbitControls
           enablePan={false}
