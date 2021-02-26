@@ -1,31 +1,31 @@
+import { Canvas } from "react-three-fiber";
+import { OrbitControls } from "@react-three/drei";
 import styled from "styled-components";
-
-import Title from "./Title";
-import Circle from "./Circle";
-import Description from "./Description";
+import Scene from "./Scene";
 
 const Section = styled.section`
   width: 100%;
   height: 100vh;
-  font-family: "Monument";
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
 `;
-const Content = styled.div`
-  position: relative;
-  padding-top: 10%;
-  width: 70%;
+const Invitation = styled.div`
+  width: 50%;
   height: 100%;
 `;
 const WelcomeSection = () => {
   return (
     <Section>
-      <Content>
-        <Title />
-        <Circle />
-        <Description />
-      </Content>
+      <Invitation />
+      <Canvas pixelRatio={[1, 2]} style={{ width: "50%" }}>
+        <Scene />
+        <OrbitControls
+          enablePan={false}
+          enableZoom={false}
+          maxPolarAngle={Math.PI / 2}
+          minPolarAngle={Math.PI / 2}
+        />
+      </Canvas>
     </Section>
   );
 };
