@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 import WelcomeSection from "../components/WelcomeSection/WelcomeSection";
-import ProjectsSection from "../components/ProjectsSection/ProjectsSection";
 import ContactSection from "../components/ContactSection/ContactSection";
 
 import Header from "../components/Header";
@@ -16,7 +15,6 @@ export default function Home() {
       <Header />
       <Main>
         <WelcomeSection />
-        <ProjectsSection />
         <ContactSection />
       </Main>
     </>
