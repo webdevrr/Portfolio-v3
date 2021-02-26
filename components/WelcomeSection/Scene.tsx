@@ -67,6 +67,7 @@ const Scene = (props: Props) => {
       <Suspense fallback={null}>
         <a.mesh
           ref={sphere}
+          //@ts-ignore
           scale={wobble.to((w) => [w, w, w])}
           onPointerOver={() => setHovered(true)}
           onPointerOut={() => setHovered(false)}
