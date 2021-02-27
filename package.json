@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-spring/three": "^9.0.0-rc.3",
+    "@react-spring/web": "^9.0.0-rc.3",
     "@react-three/drei": "^3.8.7",
     "@types/three": "^0.125.3",
     "gsap": "^3.6.0",
