@@ -1,8 +1,14 @@
+import { Dispatch, SetStateAction } from "react";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import styled from "styled-components";
 import Scene from "./Scene";
 import Invitation from "./Invitation";
+
+interface Props {
+  isDarkMode: boolean;
+  setIsDarkMode: Dispatch<SetStateAction<boolean>>;
+}
 
 const Section = styled.section`
   width: 100%;
@@ -11,7 +17,7 @@ const Section = styled.section`
   flex-direction: row;
 `;
 
-const WelcomeSection = () => {
+const WelcomeSection = ({ isDarkMode, setIsDarkMode }: Props) => {
   return (
     <Section>
       <Invitation />
@@ -19,7 +25,7 @@ const WelcomeSection = () => {
         pixelRatio={[1, 2]}
         style={{ width: "50%", backgroundColor: "transparent" }}
       >
-        <Scene />
+        <Scene isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         <OrbitControls
           enablePan={false}
           enableZoom={false}

@@ -1,5 +1,12 @@
 import * as THREE from "three";
-import React, { Suspense, useEffect, useState, useRef } from "react";
+import React, {
+  Suspense,
+  useEffect,
+  useState,
+  useRef,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { useFrame } from "react-three-fiber";
 import {
   PerspectiveCamera,
@@ -10,14 +17,17 @@ import {
 import { useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
 
-interface Props {}
+interface Props {
+  isDarkMode: boolean;
+  setIsDarkMode: Dispatch<SetStateAction<boolean>>;
+}
 
 const AnimatedMaterial = a(MeshDistortMaterial);
 
-const Scene = (props: Props) => {
+const Scene = ({ isDarkMode, setIsDarkMode }: Props) => {
   const sphere = useRef(null);
   const light = useRef(null);
-  const [mode, setMode] = useState(false);
+
   const [down, setDown] = useState(false);
   const [hovered, setHovered] = useState(false);
 
@@ -44,14 +54,14 @@ const Scene = (props: Props) => {
   const [{ wobble, coat, color, ambient, env }] = useSpring(
     {
       wobble: down ? 1.2 : hovered ? 1.05 : 1,
-      coat: mode && !hovered ? 0.04 : 1,
-      ambient: mode && !hovered ? 1.5 : 0.5,
-      env: mode && !hovered ? 0.4 : 1,
-      color: hovered ? "#E8B059" : mode ? "#202020" : "white",
+      coat: isDarkMode && !hovered ? 0.04 : 1,
+      ambient: isDarkMode && !hovered ? 1.5 : 0.5,
+      env: isDarkMode && !hovered ? 0.4 : 1,
+      color: hovered ? "#E8B059" : isDarkMode ? "#202020" : "white",
       config: (n) =>
         n === "wobble" && hovered && { mass: 2, tension: 1000, friction: 10 },
     },
-    [mode, hovered, down]
+    [isDarkMode, hovered, down]
   );
 
   return (
@@ -75,7 +85,7 @@ const Scene = (props: Props) => {
           onPointerDown={() => setDown(true)}
           onPointerUp={() => {
             setDown(false);
-            setMode(!mode);
+            setIsDarkMode(!isDarkMode);
           }}
         >
           <sphereBufferGeometry args={[1, 64, 64]} />
@@ -91,7 +101,7 @@ const Scene = (props: Props) => {
         <ContactShadows
           rotation={[Math.PI / 2, 0, 0]}
           position={[0, -1.6, 0]}
-          opacity={mode ? 0.8 : 0.4}
+          opacity={isDarkMode ? 0.8 : 0.4}
           width={15}
           height={15}
           blur={2.5}

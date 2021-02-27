@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { useState } from "react";
 import WelcomeSection from "../components/WelcomeSection/WelcomeSection";
 import ContactSection from "../components/ContactSection/ContactSection";
 
@@ -10,11 +10,13 @@ const Main = styled.main`
 `;
 
 export default function Home() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
   return (
     <>
       <Header />
       <Main>
-        <WelcomeSection />
+        <WelcomeSection isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         <ContactSection />
       </Main>
     </>
