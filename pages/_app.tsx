@@ -1,8 +1,6 @@
 import { AppProps } from "next/app";
 import { createGlobalStyle } from "styled-components";
 
-import GlobalFonts from "../public/fonts/fonts";
-
 const GlobalStyle = createGlobalStyle`
 html,
 body {
@@ -21,7 +19,6 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
-      <GlobalFonts />
       <Component {...pageProps} />
     </>
   );
