@@ -2,6 +2,7 @@ import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import styled from "styled-components";
 import Scene from "./Scene";
+import Invitation from "./Invitation";
 
 const Section = styled.section`
   width: 100%;
@@ -9,10 +10,7 @@ const Section = styled.section`
   display: flex;
   flex-direction: row;
 `;
-const Invitation = styled.div`
-  width: 50%;
-  height: 100%;
-`;
+
 const WelcomeSection = () => {
   return (
     <Section>
