@@ -9,18 +9,18 @@ import Header from "../components/Header";
 const Main = styled(a.main)``;
 
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(true);
 
   const [{ background }] = useSpring(
-    { background: isDarkMode ? "#1b1b1d" : "#f0f0f0" },
-    [isDarkMode]
+    { background: darkMode ? "#1b1b1d" : "#f0f0f0" },
+    [darkMode]
   );
 
   return (
     <>
       <Header />
       <Main style={{ background }}>
-        <WelcomeSection isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <WelcomeSection darkMode={darkMode} setDarkMode={setDarkMode} />
         <ContactSection />
       </Main>
     </>

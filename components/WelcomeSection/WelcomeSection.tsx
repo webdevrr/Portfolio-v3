@@ -6,8 +6,8 @@ import Scene from "./Scene";
 import Invitation from "./Invitation";
 
 interface Props {
-  isDarkMode: boolean;
-  setIsDarkMode: Dispatch<SetStateAction<boolean>>;
+  darkMode: boolean;
+  setDarkMode: Dispatch<SetStateAction<boolean>>;
 }
 
 const Section = styled.section`
@@ -17,7 +17,7 @@ const Section = styled.section`
   flex-direction: row;
 `;
 
-const WelcomeSection = ({ isDarkMode, setIsDarkMode }: Props) => {
+const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
   return (
     <Section>
       <Invitation />
@@ -25,7 +25,7 @@ const WelcomeSection = ({ isDarkMode, setIsDarkMode }: Props) => {
         pixelRatio={[1, 2]}
         style={{ width: "50%", backgroundColor: "transparent" }}
       >
-        <Scene isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <Scene darkMode={darkMode} setDarkMode={setDarkMode} />
         <OrbitControls
           enablePan={false}
           enableZoom={false}

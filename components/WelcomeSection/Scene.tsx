@@ -18,13 +18,13 @@ import { useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
 
 interface Props {
-  isDarkMode: boolean;
-  setIsDarkMode: Dispatch<SetStateAction<boolean>>;
+  darkMode: boolean;
+  setDarkMode: Dispatch<SetStateAction<boolean>>;
 }
 
 const AnimatedMaterial = a(MeshDistortMaterial);
 
-const Scene = ({ isDarkMode, setIsDarkMode }: Props) => {
+const Scene = ({ darkMode, setDarkMode }: Props) => {
   const sphere = useRef(null);
   const light = useRef(null);
 
@@ -54,14 +54,14 @@ const Scene = ({ isDarkMode, setIsDarkMode }: Props) => {
   const [{ wobble, coat, color, ambient, env }] = useSpring(
     {
       wobble: down ? 1.2 : hovered ? 1.05 : 1,
-      coat: isDarkMode && !hovered ? 0.04 : 1,
-      ambient: isDarkMode && !hovered ? 1.5 : 0.5,
-      env: isDarkMode && !hovered ? 0.4 : 1,
-      color: hovered ? "#E8B059" : isDarkMode ? "#202020" : "white",
+      coat: darkMode && !hovered ? 0.04 : 1,
+      ambient: darkMode && !hovered ? 1.5 : 0.5,
+      env: darkMode && !hovered ? 0.4 : 1,
+      color: hovered ? "#E8B059" : darkMode ? "#202020" : "white",
       config: (n) =>
         n === "wobble" && hovered && { mass: 2, tension: 1000, friction: 10 },
     },
-    [isDarkMode, hovered, down]
+    [darkMode, hovered, down]
   );
 
   return (
@@ -85,7 +85,7 @@ const Scene = ({ isDarkMode, setIsDarkMode }: Props) => {
           onPointerDown={() => setDown(true)}
           onPointerUp={() => {
             setDown(false);
-            setIsDarkMode(!isDarkMode);
+            setDarkMode(!darkMode);
           }}
         >
           <sphereBufferGeometry args={[1, 64, 64]} />
@@ -101,7 +101,7 @@ const Scene = ({ isDarkMode, setIsDarkMode }: Props) => {
         <ContactShadows
           rotation={[Math.PI / 2, 0, 0]}
           position={[0, -1.6, 0]}
-          opacity={isDarkMode ? 0.8 : 0.4}
+          opacity={darkMode ? 0.8 : 0.4}
           width={15}
           height={15}
           blur={2.5}
