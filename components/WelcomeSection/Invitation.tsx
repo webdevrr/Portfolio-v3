@@ -33,12 +33,21 @@ const Invitation = ({ darkMode }: Props) => {
     [darkMode]
   ) as any;
 
+  const Overflow = styled.span`
+    overflow: hidden;
+  `;
   return (
     <Section>
       <FlexContainer>
-        <Hello style={{ color }}>Hello.</Hello>
-        <Hello style={{ color }}>my name is</Hello>
-        <Name>Robert</Name>
+        <Overflow>
+          <Hello style={{ color }}>Hello.</Hello>
+        </Overflow>
+        <Overflow>
+          <Hello style={{ color }}>my name is</Hello>
+        </Overflow>
+        <Overflow>
+          <Name>Robert</Name>
+        </Overflow>
       </FlexContainer>
     </Section>
   );
