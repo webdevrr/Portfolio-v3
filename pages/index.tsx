@@ -14,9 +14,9 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
   const mainRef = useRef(null);
 
-  useEffect(() => {
-    gsap.to(mainRef.current, { background: darkMode ? "#1b1b1d" : "#f0f0f0" });
-  }, [darkMode]);
+  // useEffect(() => {
+  //   gsap.to(mainRef.current, { background: darkMode ? "#1b1b1d" : "#f0f0f0" });
+  // }, [darkMode]);
 
   return (
     <>
