@@ -20,7 +20,7 @@ const Section = styled.section`
 const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
   return (
     <Section>
-      <Invitation />
+      <Invitation darkMode={darkMode} />
       <Canvas
         pixelRatio={[1, 2]}
         style={{ width: "50%", backgroundColor: "transparent" }}

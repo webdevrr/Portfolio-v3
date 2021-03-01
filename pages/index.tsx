@@ -12,7 +12,9 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
 
   const [{ background }] = useSpring(
-    { background: darkMode ? "#1b1b1d" : "#f0f0f0" },
+    {
+      background: darkMode ? "#1b1b1d" : "#f0f0f0",
+    },
     [darkMode]
   );
 
