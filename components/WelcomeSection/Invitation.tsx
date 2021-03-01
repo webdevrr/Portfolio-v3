@@ -22,6 +22,9 @@ const Name = styled.h2`
   color: #e8b059;
   font-size: 5em;
 `;
+const Role = styled.h2`
+  font-size: 2em;
+`;
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,12 +37,29 @@ const Invitation = ({ darkMode }: Props) => {
   const firstLineRef = useRef(null);
   const secondLineRef = useRef(null);
   const nameRef = useRef(null);
+  const roleRef = useRef(null);
 
   useEffect(() => {
-    gsap.to([firstLineRef.current, secondLineRef.current], {
+    gsap.to([firstLineRef.current, secondLineRef.current, roleRef.current], {
       color: darkMode ? "#f0f0f0" : "#1b1b1d",
     });
   }, [darkMode]);
+
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.fromTo(
+      [firstLineRef.current, secondLineRef.current, nameRef.current],
+      { y: 150 },
+      { y: 0, duration: 0.5, stagger: 0.25 }
+    ).fromTo(
+      roleRef.current,
+      { y: -150 },
+      { y: 0, duration: 0.5, stagger: 0.25 }
+    );
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   return (
     <Section>
@@ -52,6 +72,9 @@ const Invitation = ({ darkMode }: Props) => {
         </Overflow>
         <Overflow>
           <Name ref={nameRef}>Robert</Name>
+        </Overflow>
+        <Overflow>
+          <Role ref={roleRef}>web dev</Role>
         </Overflow>
       </FlexContainer>
     </Section>
