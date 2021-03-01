@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { a, useSpring } from "@react-spring/web";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 interface Props {
   darkMode: boolean;
 }
@@ -11,12 +12,13 @@ const Section = styled.div`
   align-items: center;
   justify-content: center;
   font-family: "Inter", sans-serif;
+  color: #f0f0f0;
 `;
-const Hello = styled(a.h1)`
+const Hello = styled.h2`
   font-size: 5em;
 `;
 
-const Name = styled(a.h2)`
+const Name = styled.h2`
   color: #e8b059;
   font-size: 5em;
 `;
@@ -27,25 +29,29 @@ const FlexContainer = styled.div`
 const Overflow = styled.span`
   overflow: hidden;
 `;
+
 const Invitation = ({ darkMode }: Props) => {
-  const [{ color }] = useSpring(
-    {
+  const firstLineRef = useRef(null);
+  const secondLineRef = useRef(null);
+  const nameRef = useRef(null);
+
+  useEffect(() => {
+    gsap.to([firstLineRef.current, secondLineRef.current], {
       color: darkMode ? "#f0f0f0" : "#1b1b1d",
-    },
-    [darkMode]
-  ) as any;
+    });
+  }, [darkMode]);
 
   return (
     <Section>
       <FlexContainer>
         <Overflow>
-          <Hello style={{ color }}>Hello.</Hello>
+          <Hello ref={firstLineRef}>Hello.</Hello>
         </Overflow>
         <Overflow>
-          <Hello style={{ color }}>my name is</Hello>
+          <Hello ref={secondLineRef}>my name is</Hello>
         </Overflow>
         <Overflow>
-          <Name>Robert</Name>
+          <Name ref={nameRef}>Robert</Name>
         </Overflow>
       </FlexContainer>
     </Section>
