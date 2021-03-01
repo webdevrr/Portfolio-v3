@@ -32,7 +32,7 @@ const Scene = ({ darkMode, setDarkMode }: Props) => {
   const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
-    document.body.style.cursor = hovered ? "none" : "default";
+    document.body.style.cursor = hovered ? "none" : "auto";
   }, [hovered]);
 
   useFrame((state) => {

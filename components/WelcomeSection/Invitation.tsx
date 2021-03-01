@@ -8,9 +8,21 @@ const Section = styled.div`
   width: 50%;
   height: 100%;
   display: flex;
-`;
-const Title = styled(a.h2)`
+  align-items: center;
+  justify-content: center;
   font-family: "Inter", sans-serif;
+`;
+const Hello = styled(a.h1)`
+  font-size: 5em;
+`;
+
+const Name = styled(a.h2)`
+  color: #e8b059;
+  font-size: 5em;
+`;
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const Invitation = ({ darkMode }: Props) => {
@@ -23,7 +35,11 @@ const Invitation = ({ darkMode }: Props) => {
 
   return (
     <Section>
-      <Title style={{ color }}>Hello</Title>
+      <FlexContainer>
+        <Hello style={{ color }}>Hello.</Hello>
+        <Hello style={{ color }}>my name is</Hello>
+        <Name>Robert</Name>
+      </FlexContainer>
     </Section>
   );
 };
