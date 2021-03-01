@@ -4,6 +4,3 @@ const withTM = require("next-transpile-modules")([
 ]);
 
 module.exports = withTM();
-module.exports = {
-  target: "serverless",
-};
