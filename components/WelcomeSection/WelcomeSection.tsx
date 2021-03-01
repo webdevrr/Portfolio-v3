@@ -21,7 +21,7 @@ const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
   return (
     <Section>
       <Invitation darkMode={darkMode} />
-      {/* <Canvas
+      <Canvas
         pixelRatio={[1, 2]}
         style={{ width: "50%", backgroundColor: "transparent" }}
       >
@@ -32,7 +32,7 @@ const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-      </Canvas> */}
+      </Canvas>
     </Section>
   );
 };
