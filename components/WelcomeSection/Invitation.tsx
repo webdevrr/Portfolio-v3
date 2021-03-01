@@ -15,14 +15,17 @@ const Section = styled.div`
   color: #f0f0f0;
 `;
 const Hello = styled.h2`
+  transform: translateY(150px);
   font-size: 5em;
 `;
 
 const Name = styled.h2`
+  transform: translateY(150px);
   color: #e8b059;
   font-size: 5em;
 `;
 const Role = styled.h2`
+  transform: translateY(-150px);
   font-size: 2em;
 `;
 const FlexContainer = styled.div`
@@ -47,15 +50,11 @@ const Invitation = ({ darkMode }: Props) => {
 
   useLayoutEffect(() => {
     const tl = gsap.timeline();
-    tl.fromTo(
-      [firstLineRef.current, secondLineRef.current, nameRef.current],
-      { y: 150 },
-      { y: 0, duration: 0.5, stagger: 0.25 }
-    ).fromTo(
-      roleRef.current,
-      { y: -150 },
-      { y: 0, duration: 0.5, stagger: 0.25 }
-    );
+    tl.to([firstLineRef.current, secondLineRef.current, nameRef.current], {
+      y: 0,
+      duration: 0.5,
+      stagger: 0.25,
+    }).to(roleRef.current, { y: 0, duration: 0.5, stagger: 0.25 });
     return () => {
       tl.kill();
     };
