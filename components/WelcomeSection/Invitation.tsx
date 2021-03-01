@@ -50,11 +50,15 @@ const Invitation = ({ darkMode }: Props) => {
 
   useEffect(() => {
     const tl = gsap.timeline();
-    tl.to([firstLineRef.current, secondLineRef.current, nameRef.current], {
-      y: 0,
-      duration: 0.5,
-      stagger: 0.25,
-    }).to(roleRef.current, { y: 0, duration: 0.5, stagger: 0.25 });
+    tl.to(
+      [firstLineRef.current, secondLineRef.current, nameRef.current],
+      {
+        y: 0,
+        duration: 0.5,
+        stagger: 0.25,
+      },
+      3
+    ).to(roleRef.current, { y: 0, duration: 0.5, stagger: 0.25 }, 3);
     return () => {
       tl.kill();
     };
