@@ -24,7 +24,9 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
+const Overflow = styled.span`
+  overflow: hidden;
+`;
 const Invitation = ({ darkMode }: Props) => {
   const [{ color }] = useSpring(
     {
@@ -33,9 +35,6 @@ const Invitation = ({ darkMode }: Props) => {
     [darkMode]
   ) as any;
 
-  const Overflow = styled.span`
-    overflow: hidden;
-  `;
   return (
     <Section>
       <FlexContainer>
