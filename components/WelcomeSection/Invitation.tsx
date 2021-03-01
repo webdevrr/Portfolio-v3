@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useEffect, useRef } from "react";
 import gsap from "gsap";
 interface Props {
   darkMode: boolean;
@@ -45,7 +45,7 @@ const Invitation = ({ darkMode }: Props) => {
     });
   }, [darkMode]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const tl = gsap.timeline();
     tl.fromTo(
       [firstLineRef.current, secondLineRef.current, nameRef.current],
