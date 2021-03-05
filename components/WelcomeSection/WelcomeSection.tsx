@@ -3,7 +3,7 @@ import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import styled from "styled-components";
 import Scene from "./Scene";
-import Invitation from "./Invitation";
+import Introduction from "./Introduction";
 
 interface Props {
   darkMode: boolean;
@@ -20,8 +20,8 @@ const Section = styled.section`
 const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
   return (
     <Section>
-      <Invitation darkMode={darkMode} />
-      <Canvas
+      <Introduction darkMode={darkMode} />
+      {/* <Canvas
         pixelRatio={[1, 2]}
         style={{ width: "50%", backgroundColor: "transparent" }}
       >
@@ -32,7 +32,7 @@ const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-      </Canvas>
+      </Canvas> */}
     </Section>
   );
 };

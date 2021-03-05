@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+
 interface Props {
   darkMode: boolean;
 }
@@ -36,7 +37,7 @@ const Overflow = styled.span`
   overflow: hidden;
 `;
 
-const Invitation = ({ darkMode }: Props) => {
+const Introduction = ({ darkMode }: Props) => {
   const firstLineRef = useRef(null);
   const secondLineRef = useRef(null);
   const nameRef = useRef(null);
@@ -50,15 +51,11 @@ const Invitation = ({ darkMode }: Props) => {
 
   useEffect(() => {
     const tl = gsap.timeline();
-    tl.to(
-      [firstLineRef.current, secondLineRef.current, nameRef.current],
-      {
-        y: 0,
-        duration: 0.5,
-        stagger: 0.25,
-      },
-      3
-    ).to(roleRef.current, { y: 0, duration: 0.5, stagger: 0.25 }, 3);
+    tl.to([firstLineRef.current, secondLineRef.current, nameRef.current], {
+      y: 0,
+      duration: 0.5,
+      stagger: 0.25,
+    }).to(roleRef.current, { y: 0, duration: 0.5, stagger: 0.25 });
     return () => {
       tl.kill();
     };
@@ -84,4 +81,4 @@ const Invitation = ({ darkMode }: Props) => {
   );
 };
 
-export default Invitation;
+export default Introduction;
