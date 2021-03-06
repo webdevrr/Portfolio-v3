@@ -9,6 +9,7 @@ import Header from "../components/Header";
 
 const Main = styled.main`
   background: #1b1b1d;
+  overflow: hidden;
 `;
 
 export default function Home() {

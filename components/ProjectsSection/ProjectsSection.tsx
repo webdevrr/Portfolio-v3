@@ -22,24 +22,9 @@ const ProjectsSection = (props: Props) => {
   const triggerWrapperRef = useRef(null);
 
   useEffect(() => {
-    //sctrollTo
-    ScrollTrigger.create({
-      id: "Projects",
-      trigger: projectsRef.current,
-      start: "top+=10px bottom",
-      onEnter: () => {
-        gsap.to(window, {
-          scrollTo: { y: projectsRef.current, autoKill: false },
-          duration: 1,
-          ease: "power2.out",
-        });
-      },
-    });
     //pin
     ScrollTrigger.create({
-      // markers: true,
       id: "Pin",
-      markers: true,
       trigger: triggerWrapperRef.current,
       start: "top top",
       end: "bottom bottom",
