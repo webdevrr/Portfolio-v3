@@ -3,6 +3,8 @@ import styled from "styled-components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+import Projects from "./Projects";
+import Trigger from "./Trigger";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -13,21 +15,32 @@ const Section = styled.section`
 `;
 
 const ProjectsSection = (props: Props) => {
-  const sectionRef = useRef(null);
+  const projectsRef = useRef(null);
 
   useEffect(() => {
+    //sctrollTo
     ScrollTrigger.create({
       id: "Projects",
-      trigger: sectionRef.current,
+      trigger: projectsRef.current,
       start: "top+=10px bottom",
       onEnter: () => {
         gsap.to(window, {
-          scrollTo: { y: sectionRef.current, autoKill: false },
+          scrollTo: { y: projectsRef.current, autoKill: false },
           duration: 1,
           ease: "power2.out",
         });
       },
     });
+    //pin
+    ScrollTrigger.create({
+      id: "Pin",
+      markers: true,
+      trigger: projectsRef.current,
+      start: "top",
+      end: "bottom 5%",
+      pin: projectsRef.current,
+    });
+
     return () => {
       ScrollTrigger.getAll().forEach((t) => {
         t.kill();
@@ -35,7 +48,11 @@ const ProjectsSection = (props: Props) => {
     };
   }, []);
 
-  return <Section ref={sectionRef}></Section>;
+  return (
+    <Section>
+      <Projects ref={projectsRef} />
+    </Section>
+  );
 };
 
 export default ProjectsSection;
