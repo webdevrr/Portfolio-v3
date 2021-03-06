@@ -7,9 +7,11 @@ import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const Wrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  background-color: red;
+  background-color: blue;
+  z-index: 10;
+  position: absolute;
 `;
 interface Props {}
 
