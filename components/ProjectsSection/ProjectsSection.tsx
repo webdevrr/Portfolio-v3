@@ -17,7 +17,6 @@ const ProjectsSection = (props: Props) => {
 
   useEffect(() => {
     ScrollTrigger.create({
-      markers: true,
       id: "Projects",
       trigger: sectionRef.current,
       start: "top+=10px bottom",
@@ -25,6 +24,7 @@ const ProjectsSection = (props: Props) => {
         gsap.to(window, {
           scrollTo: { y: sectionRef.current, autoKill: false },
           duration: 1,
+          ease: "power2.out",
         });
       },
     });

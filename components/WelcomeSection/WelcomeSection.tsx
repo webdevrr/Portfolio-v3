@@ -29,13 +29,13 @@ const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
   useEffect(() => {
     ScrollTrigger.create({
       id: "Welcome",
-      // markers: true,
       trigger: sectionRef.current,
       end: "bottom top+=10px",
       onEnterBack: () => {
         gsap.to(window, {
           scrollTo: { y: sectionRef.current, autoKill: false },
           duration: 1,
+          ease: "power2.out",
         });
       },
     });
