@@ -2,12 +2,12 @@ import { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import styled from "styled-components";
-import Scene from "./Scene";
-import Introduction from "./Introduction";
-
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+
+import Scene from "./Scene";
+import Introduction from "./Introduction";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -49,7 +49,7 @@ const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
   return (
     <Section ref={sectionRef}>
       <Introduction darkMode={darkMode} />
-      {/* <Canvas
+      <Canvas
         pixelRatio={[1, 2]}
         style={{ width: "50%", backgroundColor: "transparent" }}
       >
@@ -60,7 +60,7 @@ const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-      </Canvas> */}
+      </Canvas>
     </Section>
   );
 };
