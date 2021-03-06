@@ -4,8 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 interface Props {}
 
@@ -18,9 +17,10 @@ const ProjectsSection = (props: Props) => {
 
   useEffect(() => {
     ScrollTrigger.create({
-      trigger: sectionRef.current,
       markers: true,
-      start: "top bottom-=25px",
+      id: "Projects",
+      trigger: sectionRef.current,
+      start: "top+=10px bottom",
       onEnter: () => {
         gsap.to(window, {
           scrollTo: { y: sectionRef.current, autoKill: false },

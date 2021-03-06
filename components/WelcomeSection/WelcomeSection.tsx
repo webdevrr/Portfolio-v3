@@ -5,6 +5,12 @@ import styled from "styled-components";
 import Scene from "./Scene";
 import Introduction from "./Introduction";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
 interface Props {
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
@@ -18,8 +24,30 @@ const Section = styled.section`
 `;
 
 const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    ScrollTrigger.create({
+      id: "Welcome",
+      // markers: true,
+      trigger: sectionRef.current,
+      end: "bottom top+=10px",
+      onEnterBack: () => {
+        gsap.to(window, {
+          scrollTo: { y: sectionRef.current, autoKill: false },
+          duration: 1,
+        });
+      },
+    });
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        t.kill();
+      });
+    };
+  }, []);
+
   return (
-    <Section>
+    <Section ref={sectionRef}>
       <Introduction darkMode={darkMode} />
       {/* <Canvas
         pixelRatio={[1, 2]}
