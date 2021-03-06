@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Element } from "react-scroll";
 
 interface Props {}
 const Section = styled.section`
@@ -6,7 +7,11 @@ const Section = styled.section`
 `;
 
 const ProjectsSection = (props: Props) => {
-  return <Section></Section>;
+  return (
+    <Element name="projects">
+      <Section></Section>
+    </Element>
+  );
 };
 
 export default ProjectsSection;
