@@ -4,7 +4,7 @@ import { OrbitControls } from "@react-three/drei";
 import styled from "styled-components";
 import Scene from "./Scene";
 import Introduction from "./Introduction";
-import Scroll from "react-scroll";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -22,28 +22,20 @@ const Section = styled.section`
 `;
 
 const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
-  const scroller = Scroll.scroller;
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      markers: true,
-      start: "bottom bottom-=25px",
-      onEnter: () => {
-        scroller.scrollTo("projects", {
-          duration: 800,
-          delay: 0,
-          smooth: "easeInOutQuart",
-        });
-      },
-    });
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => {
-        t.kill();
-      });
-    };
-  }, []);
+  // useEffect(() => {
+  //   ScrollTrigger.create({
+  //     trigger: sectionRef.current,
+  //     markers: true,
+  //     start: "bottom bottom-=25px",
+  //   });
+  //   return () => {
+  //     ScrollTrigger.getAll().forEach((t) => {
+  //       t.kill();
+  //     });
+  //   };
+  // }, []);
 
   return (
     <Section ref={sectionRef}>
