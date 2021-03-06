@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import WelcomeSection from "../components/WelcomeSection/WelcomeSection";
 import ContactSection from "../components/ContactSection/ContactSection";
+import ProjectsSection from "../components/ProjectsSection/ProjectsSection";
 import Header from "../components/Header";
 
 const Main = styled.main`
@@ -25,6 +26,7 @@ export default function Home() {
       <Header />
       <Main ref={mainRef}>
         <WelcomeSection darkMode={darkMode} setDarkMode={setDarkMode} />
+        <ProjectsSection />
         <ContactSection />
       </Main>
     </>
