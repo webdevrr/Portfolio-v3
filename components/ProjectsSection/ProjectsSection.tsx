@@ -2,13 +2,12 @@ import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import projects from "../../models/projects";
 import Projects from "./Projects";
 import Trigger from "./Trigger";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 interface Props {}
 
@@ -43,7 +42,7 @@ const ProjectsSection = (props: Props) => {
       <TriggerWrapper ref={triggerWrapperRef}>
         <Projects ref={projectsRef} />
         {projects.map((project, index) => {
-          return <Trigger key={index} />;
+          return <Trigger key={index} index={index} />;
         })}
       </TriggerWrapper>
     </Section>
