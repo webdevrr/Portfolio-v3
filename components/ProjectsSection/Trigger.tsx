@@ -10,7 +10,6 @@ const Dummy = styled.div`
 `;
 interface Props {
   index: number;
-  projectsRef;
 }
 
 const Trigger = ({ index }: Props) => {

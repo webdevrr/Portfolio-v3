@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -17,11 +17,27 @@ const Title = styled.h1``;
 const Image = styled.img``;
 interface Props {}
 
-const Projects = forwardRef<HTMLDivElement>((props: Props, ref) => {
+const Projects = forwardRef((props: Props, ref) => {
+  const wrapperRef = useRef(null);
+  const titleRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    get wrapper() {
+      return wrapperRef.current;
+    },
+    get title() {
+      return titleRef.current;
+    },
+    get image() {
+      return imageRef.current;
+    },
+  }));
+
   return (
-    <Wrapper ref={ref}>
-      <Title>Project</Title>
-      <Image />
+    <Wrapper ref={wrapperRef}>
+      <Title ref={titleRef}>Projects</Title>
+      <Image ref={imageRef} />
     </Wrapper>
   );
 });
