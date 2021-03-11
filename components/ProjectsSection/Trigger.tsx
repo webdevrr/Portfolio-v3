@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -10,10 +10,35 @@ const Dummy = styled.div`
 `;
 interface Props {
   index: number;
+  projectsRef;
 }
 
 const Trigger = ({ index }: Props) => {
-  return <Dummy></Dummy>;
+  const dummyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (index === 0) {
+      const tl = gsap.timeline({
+        ScrollTrigger: {
+          scrub: true,
+          markers: true,
+          id: index.toString(),
+          trigger: dummyRef.current,
+          start: "top center",
+          end: "bottom bottom",
+        },
+      });
+    } else {
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        t.kill();
+      });
+    };
+  }, []);
+
+  return <Dummy ref={dummyRef}></Dummy>;
 };
 
 export default Trigger;

@@ -13,10 +13,17 @@ const Wrapper = styled.div`
   z-index: 10;
   position: absolute;
 `;
+const Title = styled.h1``;
+const Image = styled.img``;
 interface Props {}
 
 const Projects = forwardRef<HTMLDivElement>((props: Props, ref) => {
-  return <Wrapper ref={ref}></Wrapper>;
+  return (
+    <Wrapper ref={ref}>
+      <Title>Project</Title>
+      <Image />
+    </Wrapper>
+  );
 });
 
 export default Projects;

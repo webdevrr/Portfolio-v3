@@ -42,7 +42,9 @@ const ProjectsSection = (props: Props) => {
       <TriggerWrapper ref={triggerWrapperRef}>
         <Projects ref={projectsRef} />
         {projects.map((project, index) => {
-          return <Trigger key={index} index={index} />;
+          return (
+            <Trigger projectsRef={projectsRef} key={index} index={index} />
+          );
         })}
       </TriggerWrapper>
     </Section>
