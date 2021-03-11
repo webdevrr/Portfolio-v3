@@ -18,9 +18,7 @@ const TriggerWrapper = styled.div`
 
 const ProjectsSection = (props: Props) => {
   const projectsRefs = useRef(null);
-  const projectsTitleRef = useRef(null);
-  const projectsImageRef = useRef(null);
-  const triggerWrapperRef = useRef(null);
+  const triggerWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     //pin
@@ -29,7 +27,7 @@ const ProjectsSection = (props: Props) => {
       trigger: triggerWrapperRef.current,
       start: "top top",
       end: "bottom bottom",
-      pin: projectsRefs.current,
+      pin: projectsRefs.current.wrapper,
     });
 
     return () => {
@@ -44,7 +42,7 @@ const ProjectsSection = (props: Props) => {
       <TriggerWrapper ref={triggerWrapperRef}>
         <Projects ref={projectsRefs} />
         {projects.map((project, index) => {
-          return <Trigger key={index} index={index} />;
+          return <Trigger key={index} index={index} ref={projectsRefs} />;
         })}
       </TriggerWrapper>
     </Section>
