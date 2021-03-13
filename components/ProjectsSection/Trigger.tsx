@@ -16,16 +16,17 @@ const Trigger = forwardRef(({ index }: Props, ref: MutableRefObject<any>) => {
   const dummyRef = useRef(null);
 
   useEffect(() => {
-    if (index === 0) {
-      gsap.to(ref.current.wrapper, {
-        scrollTrigger: {
-          trigger: dummyRef.current,
-          markers: true,
-          start: "top center",
-        },
-        background: "red",
-      });
-    }
+    const tl = gsap.timeline();
+    // if (index === 0) {
+    //   tl.to(ref.current.wrapper, {
+    //     scrollTrigger: {
+    //       trigger: dummyRef.current,
+    //       markers: true,
+    //       start: "top center",
+    //     },
+    //     background: "red",
+    //   });
+    // }
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => {

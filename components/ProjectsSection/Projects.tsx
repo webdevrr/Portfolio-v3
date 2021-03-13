@@ -3,24 +3,31 @@ import styled from "styled-components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+import { Project } from "../../models/projects";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const Wrapper = styled.div`
   height: 100vh;
   width: 100%;
-  background-color: blue;
   z-index: 10;
   position: absolute;
+  display: flex;
 `;
-const Title = styled.h1``;
+const Title = styled.h1`
+  color: white;
+  font-family: "Inter", sans-serif;
+`;
 const Image = styled.img``;
-interface Props {}
+interface Props {
+  project: Project;
+}
 
-const Projects = forwardRef((props: Props, ref) => {
+const Projects = forwardRef(({ project }: Props, ref) => {
   const wrapperRef = useRef(null);
   const titleRef = useRef(null);
   const imageRef = useRef(null);
+  const { logo, name } = project;
 
   useImperativeHandle(ref, () => ({
     get wrapper() {
@@ -36,8 +43,8 @@ const Projects = forwardRef((props: Props, ref) => {
 
   return (
     <Wrapper ref={wrapperRef}>
-      <Title ref={titleRef}>Projects</Title>
-      <Image ref={imageRef} />
+      <Title ref={titleRef}>{name}</Title>
+      <Image ref={imageRef} src={logo} />
     </Wrapper>
   );
 });

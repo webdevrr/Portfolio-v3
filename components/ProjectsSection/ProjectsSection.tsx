@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -17,6 +17,7 @@ const TriggerWrapper = styled.div`
 `;
 
 const ProjectsSection = (props: Props) => {
+  const [project, setProject] = useState(projects[0]);
   const projectsRefs = useRef(null);
   const triggerWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -40,7 +41,7 @@ const ProjectsSection = (props: Props) => {
   return (
     <Section>
       <TriggerWrapper ref={triggerWrapperRef}>
-        <Projects ref={projectsRefs} />
+        <Projects project={project} ref={projectsRefs} />
         {projects.map((project, index) => {
           return <Trigger key={index} index={index} ref={projectsRefs} />;
         })}
