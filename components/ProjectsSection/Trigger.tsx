@@ -17,16 +17,33 @@ const Trigger = forwardRef(({ index }: Props, ref: MutableRefObject<any>) => {
 
   useEffect(() => {
     const tl = gsap.timeline();
-    // if (index === 0) {
-    //   tl.to(ref.current.wrapper, {
-    //     scrollTrigger: {
-    //       trigger: dummyRef.current,
-    //       markers: true,
-    //       start: "top center",
-    //     },
-    //     background: "red",
-    //   });
-    // }
+    if (index === 0) {
+      // tl.to(ref.current.wrapper, {
+      //   scrollTrigger: {
+      //     id: index.toString(),
+      //     trigger: dummyRef.current,
+      //     markers: true,
+      //     start: "top center",
+      //   },
+      //   background: "red",
+      // });
+    } else {
+      tl.to(ref.current.wrapper, {
+        scrollTrigger: {
+          id: index.toString(),
+          trigger: dummyRef.current,
+          markers: true,
+          start: "top center",
+          onEnter: () => {
+            gsap.to(window, {
+              scrollTo: { y: `.project-${index}`, autoKill: false },
+              duration: 1,
+              ease: "power2.out",
+            });
+          },
+        },
+      });
+    }
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => {
@@ -35,7 +52,7 @@ const Trigger = forwardRef(({ index }: Props, ref: MutableRefObject<any>) => {
     };
   }, []);
 
-  return <Dummy ref={dummyRef}></Dummy>;
+  return <Dummy className={`project-${index}`} ref={dummyRef}></Dummy>;
 });
 
 export default Trigger;
