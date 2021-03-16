@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, MutableRefObject, SetStateAction } from "react";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import styled from "styled-components";
@@ -14,6 +14,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 interface Props {
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
+  projectsRef: MutableRefObject<HTMLElement>;
 }
 
 const Section = styled.section`
@@ -24,7 +25,7 @@ const Section = styled.section`
   overflow: hidden;
 `;
 
-const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
+const WelcomeSection = ({ darkMode, setDarkMode, projectsRef }: Props) => {
   return (
     <Section>
       <Introduction darkMode={darkMode} />
@@ -37,7 +38,11 @@ const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
           position: "fixed",
         }}
       >
-        <Scene darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Scene
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          projectsRef={projectsRef}
+        />
         <OrbitControls
           enablePan={false}
           enableZoom={false}

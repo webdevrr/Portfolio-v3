@@ -6,6 +6,7 @@ import React, {
   useRef,
   Dispatch,
   SetStateAction,
+  MutableRefObject,
 } from "react";
 import { useFrame } from "react-three-fiber";
 import {
@@ -16,24 +17,49 @@ import {
 } from "@react-three/drei";
 import { useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 interface Props {
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
+  projectsRef: MutableRefObject<HTMLElement>;
 }
 
 const AnimatedMaterial = a(MeshDistortMaterial);
 
-const Scene = ({ darkMode, setDarkMode }: Props) => {
+const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
   const sphere = useRef(null);
   const light = useRef(null);
+  const shadow = useRef(null);
 
   const [down, setDown] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     document.body.style.cursor = hovered ? "none" : "auto";
   }, [hovered]);
+
+  useEffect(() => {
+    ScrollTrigger.create({
+      markers: true,
+      id: "Projects",
+      trigger: projectsRef.current,
+      end: "bottom bottom",
+      onUpdate: (self) => {
+        setProgress(self.progress);
+        console.log(progress);
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        t.kill();
+      });
+    };
+  }, [progress]);
 
   useFrame((state) => {
     light.current.position.x = state.mouse.x * 20;
@@ -99,6 +125,7 @@ const Scene = ({ darkMode, setDarkMode }: Props) => {
         </a.mesh>
         <Environment preset="lobby" />
         <ContactShadows
+          ref={shadow}
           rotation={[Math.PI / 2, 0, 0]}
           position={[0, -1.6, 0]}
           opacity={darkMode ? 0.8 : 0.4}

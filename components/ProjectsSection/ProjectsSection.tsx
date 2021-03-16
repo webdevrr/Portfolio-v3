@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -15,15 +15,14 @@ const Section = styled.section`
   height: 100vh;
 `;
 
-const ProjectsSection = (props: Props) => {
+const ProjectsSection = forwardRef<HTMLElement>((props: Props, ref) => {
   const [project, setProject] = useState(projects[0]);
-  const projectsRefs = useRef(null);
 
   return (
-    <Section>
-      <Projects project={project} ref={projectsRefs} />
+    <Section ref={ref}>
+      <Projects project={project} />
     </Section>
   );
-};
+});
 
 export default ProjectsSection;

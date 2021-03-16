@@ -15,6 +15,7 @@ const Main = styled.main`
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
   const mainRef = useRef(null);
+  const projectsRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     gsap.to(mainRef.current, {
@@ -26,8 +27,12 @@ export default function Home() {
     <>
       <Header />
       <Main ref={mainRef}>
-        <WelcomeSection darkMode={darkMode} setDarkMode={setDarkMode} />
-        <ProjectsSection />
+        <WelcomeSection
+          projectsRef={projectsRef}
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+        />
+        <ProjectsSection ref={projectsRef} />
         <ContactSection />
       </Main>
     </>
