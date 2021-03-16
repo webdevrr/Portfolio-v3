@@ -11,7 +11,6 @@ const Wrapper = styled.div`
   height: 100vh;
   width: 100%;
   z-index: 10;
-  position: absolute;
   display: flex;
 `;
 const Title = styled.h1`

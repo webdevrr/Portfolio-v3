@@ -5,7 +5,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import projects from "../../models/projects";
 import Projects from "./Projects";
-import Trigger from "./Trigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,12 +39,7 @@ const ProjectsSection = (props: Props) => {
 
   return (
     <Section>
-      <TriggerWrapper ref={triggerWrapperRef}>
-        <Projects project={project} ref={projectsRefs} />
-        {projects.map((project, index) => {
-          return <Trigger key={index} index={index} ref={projectsRefs} />;
-        })}
-      </TriggerWrapper>
+      <Projects project={project} ref={projectsRefs} />
     </Section>
   );
 };
