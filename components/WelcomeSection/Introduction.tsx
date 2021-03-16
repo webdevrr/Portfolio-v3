@@ -9,6 +9,7 @@ interface Props {
 const Section = styled.div`
   width: 50%;
   height: 100vh;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;

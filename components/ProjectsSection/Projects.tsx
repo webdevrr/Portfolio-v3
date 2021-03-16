@@ -1,11 +1,11 @@
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { forwardRef, useImperativeHandle, useRef, useEffect } from "react";
 import styled from "styled-components";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+
 import { Project } from "../../models/projects";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -26,20 +26,22 @@ const Projects = forwardRef(({ project }: Props, ref) => {
   const wrapperRef = useRef(null);
   const titleRef = useRef(null);
   const imageRef = useRef(null);
+
   const { logo, name } = project;
 
-  useImperativeHandle(ref, () => ({
-    get wrapper() {
-      return wrapperRef.current;
-    },
-    get title() {
-      return titleRef.current;
-    },
-    get image() {
-      return imageRef.current;
-    },
-  }));
+  useEffect(() => {
+    ScrollTrigger.create({
+      markers: true,
+      id: "Projects",
+      trigger: wrapperRef.current,
+    });
 
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => {
+        t.kill();
+      });
+    };
+  }, []);
   return (
     <Wrapper ref={wrapperRef}>
       <Title ref={titleRef}>{name}</Title>

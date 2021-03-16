@@ -18,6 +18,7 @@ interface Props {
 
 const Section = styled.section`
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   overflow: hidden;
@@ -28,11 +29,12 @@ const WelcomeSection = ({ darkMode, setDarkMode }: Props) => {
     <Section>
       <Introduction darkMode={darkMode} />
       <Canvas
-        // pixelRatio={[1, 2]}
+        pixelRatio={[1, 2]}
         style={{
-          width: "50%",
+          width: "100%",
           height: "100vh",
           backgroundColor: "transparent",
+          position: "fixed",
         }}
       >
         <Scene darkMode={darkMode} setDarkMode={setDarkMode} />
