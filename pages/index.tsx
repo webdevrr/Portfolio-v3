@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import WelcomeSection from "../components/WelcomeSection/WelcomeSection";
 import ContactSection from "../components/ContactSection/ContactSection";
-import ProjectsSection from "../components/ProjectsSection/ProjectsSection";
+import ProjectSection from "../components/ProjectSection/ProjectSection";
 import Renderer from "../components/Scene/Renderer";
 import Header from "../components/Header";
 
@@ -38,7 +38,7 @@ export default function Home() {
           setDarkMode={setDarkMode}
           projectsRef={projectsRef}
         />
-        <ProjectsSection ref={projectsRef} />
+        <ProjectSection ref={projectsRef} />
         <ContactSection />
       </Main>
     </>
