@@ -1,7 +1,8 @@
-import Scene from "./Scene";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Dispatch, MutableRefObject, SetStateAction } from "react";
+
+import Scene from "./Scene";
 interface Props {
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;

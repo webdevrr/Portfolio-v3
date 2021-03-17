@@ -21,6 +21,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+
 interface Props {
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
@@ -50,7 +51,6 @@ const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
       end: "bottom bottom",
       onUpdate: (self) => {
         setProgress(self.progress);
-        console.log(progress);
       },
     });
 

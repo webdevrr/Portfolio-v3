@@ -1,11 +1,7 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import { Project } from "../../models/projects";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -23,16 +19,16 @@ interface Props {
 }
 
 const Projects = ({ project }: Props) => {
-  const wrapperRef = useRef(null);
-  const titleRef = useRef(null);
-  const imageRef = useRef(null);
+  const wrapper = useRef(null);
+  const title = useRef(null);
+  const image = useRef(null);
 
   const { logo, name } = project;
 
   return (
-    <Wrapper ref={wrapperRef}>
-      <Title ref={titleRef}>{name}</Title>
-      <Image ref={imageRef} src={logo} />
+    <Wrapper ref={wrapper}>
+      <Title ref={title}>{name}</Title>
+      <Image ref={image} src={logo} />
     </Wrapper>
   );
 };

@@ -39,24 +39,24 @@ const Overflow = styled.span`
 `;
 
 const Introduction = ({ darkMode }: Props) => {
-  const firstLineRef = useRef(null);
-  const secondLineRef = useRef(null);
-  const nameRef = useRef(null);
-  const roleRef = useRef(null);
+  const firstLine = useRef(null);
+  const secondLine = useRef(null);
+  const name = useRef(null);
+  const role = useRef(null);
 
   useEffect(() => {
-    gsap.to([firstLineRef.current, secondLineRef.current, roleRef.current], {
+    gsap.to([firstLine.current, secondLine.current, role.current], {
       color: darkMode ? "#f0f0f0" : "#1b1b1d",
     });
   }, [darkMode]);
 
   useEffect(() => {
     const tl = gsap.timeline();
-    tl.to([firstLineRef.current, secondLineRef.current, nameRef.current], {
+    tl.to([firstLine.current, secondLine.current, name.current], {
       y: 0,
       duration: 0.5,
       stagger: 0.25,
-    }).to(roleRef.current, { y: 0, duration: 0.5, stagger: 0.25 });
+    }).to(role.current, { y: 0, duration: 0.5, stagger: 0.25 });
     return () => {
       tl.kill();
     };
@@ -66,16 +66,16 @@ const Introduction = ({ darkMode }: Props) => {
     <Section>
       <FlexContainer>
         <Overflow>
-          <Hello ref={firstLineRef}>Hello.</Hello>
+          <Hello ref={firstLine}>Hello.</Hello>
         </Overflow>
         <Overflow>
-          <Hello ref={secondLineRef}>my name is</Hello>
+          <Hello ref={secondLine}>my name is</Hello>
         </Overflow>
         <Overflow>
-          <Name ref={nameRef}>Robert</Name>
+          <Name ref={name}>Robert</Name>
         </Overflow>
         <Overflow>
-          <Role ref={roleRef}>web dev</Role>
+          <Role ref={role}>web dev</Role>
         </Overflow>
       </FlexContainer>
     </Section>

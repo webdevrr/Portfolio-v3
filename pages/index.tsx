@@ -1,7 +1,8 @@
-import styled from "styled-components";
 import { useState, useRef, useEffect } from "react";
 
+import styled from "styled-components";
 import gsap from "gsap";
+
 import WelcomeSection from "../components/WelcomeSection/WelcomeSection";
 import ContactSection from "../components/ContactSection/ContactSection";
 import ProjectSection from "../components/ProjectSection/ProjectSection";
@@ -15,11 +16,11 @@ const Main = styled.main`
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(true);
-  const mainRef = useRef(null);
-  const projectsRef = useRef<HTMLElement>(null);
+  const main = useRef(null);
+  const projects = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    gsap.to(mainRef.current, {
+    gsap.to(main.current, {
       background: darkMode ? "#1b1b1d" : "#f0f0f0",
     });
   }, [darkMode]);
@@ -27,18 +28,18 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Main ref={mainRef}>
+      <Main ref={main}>
         <WelcomeSection
-          projectsRef={projectsRef}
+          projectsRef={projects}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
         />
         <Renderer
           darkMode={darkMode}
           setDarkMode={setDarkMode}
-          projectsRef={projectsRef}
+          projectsRef={projects}
         />
-        <ProjectSection ref={projectsRef} />
+        <ProjectSection ref={projects} />
         <ContactSection />
       </Main>
     </>
