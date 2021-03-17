@@ -5,6 +5,7 @@ import gsap from "gsap";
 import WelcomeSection from "../components/WelcomeSection/WelcomeSection";
 import ContactSection from "../components/ContactSection/ContactSection";
 import ProjectsSection from "../components/ProjectsSection/ProjectsSection";
+import Renderer from "../components/Scene/Renderer";
 import Header from "../components/Header";
 
 const Main = styled.main`
@@ -31,6 +32,11 @@ export default function Home() {
           projectsRef={projectsRef}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
+        />
+        <Renderer
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          projectsRef={projectsRef}
         />
         <ProjectsSection ref={projectsRef} />
         <ContactSection />
