@@ -37,7 +37,7 @@ const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
 
   const [down, setDown] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(null);
 
   useEffect(() => {
     document.body.style.cursor = hovered ? "none" : "auto";
@@ -64,6 +64,7 @@ const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
   useFrame((state) => {
     light.current.position.x = state.mouse.x * 20;
     light.current.position.y = state.mouse.y * 20;
+
     sphere.current.position.x = THREE.MathUtils.lerp(
       sphere.current.position.x,
       hovered ? state.mouse.x / 2 : 0,
@@ -75,12 +76,13 @@ const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
         (hovered ? state.mouse.y / 2 : 0),
       0.2
     );
+    shadow.current.position.y = map(progress, 0, 1, -5, -1.6);
   });
 
   const [{ wobble, coat, color, ambient, env }] = useSpring(
     {
       wobble: down ? 1.2 : hovered ? 1.05 : 1,
-      coat: darkMode && !hovered ? 0.04 : 1,
+      coat: darkMode && !hovered ? 0.04 : 0.5,
       ambient: darkMode && !hovered ? 1.5 : 0.5,
       env: darkMode && !hovered ? 0.4 : 1,
       color: hovered ? "#E8B059" : darkMode ? "#202020" : "white",
@@ -89,7 +91,8 @@ const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
     },
     [darkMode, hovered, down]
   );
-
+  const map = (value, x1, y1, x2, y2) =>
+    ((value - x1) * (y2 - x2)) / (y1 - x1) + x2;
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 4]} fov={75}>
@@ -120,19 +123,18 @@ const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
             envMapIntensity={env}
             clearcoat={coat}
             clearcoatRoughness={0}
-            metalness={0.1}
+            metalness={0.3}
           />
         </a.mesh>
         <Environment preset="lobby" />
         <ContactShadows
           ref={shadow}
           rotation={[Math.PI / 2, 0, 0]}
-          position={[0, -1.6, 0]}
           opacity={darkMode ? 0.8 : 0.4}
           width={15}
           height={15}
           blur={2.5}
-          far={1.6}
+          far={5}
         />
       </Suspense>
     </>
