@@ -26,11 +26,12 @@ interface Props {
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
   projectsRef: MutableRefObject<HTMLElement>;
+  canvas: MutableRefObject<HTMLDivElement>;
 }
 
 const AnimatedMaterial = a(MeshDistortMaterial);
 
-const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
+const Scene = ({ canvas, darkMode, setDarkMode, projectsRef }: Props) => {
   const sphere = useRef(null);
   const light = useRef(null);
   const shadow = useRef(null);
@@ -51,6 +52,14 @@ const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
       end: "bottom bottom",
       onUpdate: (self) => {
         setProgress(self.progress);
+      },
+      onLeave: () => {
+        canvas.current.style.position = "absolute";
+        canvas.current.style.top = "100vh";
+      },
+      onEnterBack: () => {
+        canvas.current.style.position = "fixed";
+        canvas.current.style.top = " 0";
       },
     });
 
@@ -131,9 +140,9 @@ const Scene = ({ darkMode, setDarkMode, projectsRef }: Props) => {
           ref={shadow}
           rotation={[Math.PI / 2, 0, 0]}
           opacity={darkMode ? 0.8 : 0.4}
-          width={15}
-          height={15}
-          blur={2.5}
+          width={10}
+          height={10}
+          blur={4}
           far={5}
         />
       </Suspense>

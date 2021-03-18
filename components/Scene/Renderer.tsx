@@ -3,6 +3,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Dispatch, MutableRefObject, SetStateAction } from "react";
 
 import Scene from "./Scene";
+import { useRef } from "react";
 interface Props {
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
@@ -10,9 +11,10 @@ interface Props {
 }
 
 const Renderer = ({ darkMode, setDarkMode, projectsRef }: Props) => {
+  const canvas = useRef(null);
+
   return (
-    <Canvas
-      pixelRatio={[1, 2]}
+    <div
       style={{
         width: "100%",
         height: "100vh",
@@ -21,19 +23,23 @@ const Renderer = ({ darkMode, setDarkMode, projectsRef }: Props) => {
         zIndex: 100,
         top: 0,
       }}
+      ref={canvas}
     >
-      <Scene
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-        projectsRef={projectsRef}
-      />
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 2}
-      />
-    </Canvas>
+      <Canvas pixelRatio={[1, 2]}>
+        <Scene
+          canvas={canvas}
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}
+          projectsRef={projectsRef}
+        />
+        <OrbitControls
+          enablePan={false}
+          enableZoom={false}
+          maxPolarAngle={Math.PI / 2}
+          minPolarAngle={Math.PI / 2}
+        />
+      </Canvas>
+    </div>
   );
 };
 
