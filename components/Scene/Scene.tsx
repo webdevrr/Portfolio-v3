@@ -19,6 +19,8 @@ import { useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+import offset from "../../utils/offset";
 import projects from "../../models/projects";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -40,13 +42,6 @@ const Scene = ({ canvas, darkMode, setDarkMode, projectsRef }: Props) => {
   const [down, setDown] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [progress, setProgress] = useState(null);
-
-  function offset(el) {
-    var rect = el.getBoundingClientRect(),
-      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
-  }
 
   useEffect(() => {
     document.body.style.cursor = hovered ? "none" : "auto";
@@ -71,9 +66,6 @@ const Scene = ({ canvas, darkMode, setDarkMode, projectsRef }: Props) => {
         canvas.current.style.top = `${topOffset}px`;
       },
       onEnterBack: () => {
-        const topOffset = offset(
-          projectsRef.current.children[projects.length - 1]
-        ).top;
         canvas.current.style.position = "fixed";
         canvas.current.style.top = "0";
       },
