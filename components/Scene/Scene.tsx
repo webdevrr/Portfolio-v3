@@ -19,6 +19,7 @@ import { useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import projects from "../../models/projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,23 +44,30 @@ const Scene = ({ canvas, darkMode, setDarkMode, projectsRef }: Props) => {
   useEffect(() => {
     document.body.style.cursor = hovered ? "none" : "auto";
   }, [hovered]);
+  console.log(projectsRef.current.childNodes[projects.length - 1]);
 
   useEffect(() => {
     ScrollTrigger.create({
       markers: true,
       id: "Projects",
-      trigger: projectsRef.current,
+      trigger: projectsRef.current.children[projects.length - 1],
       end: "bottom bottom",
       onUpdate: (self) => {
         setProgress(self.progress);
       },
       onLeave: () => {
         canvas.current.style.position = "absolute";
-        canvas.current.style.top = "100vh";
+        console.log(
+          projectsRef.current.children[
+            projects.length - 1
+          ].getBoundingClientRect()
+        );
+
+        // canvas.current.style.top =
       },
       onEnterBack: () => {
         canvas.current.style.position = "fixed";
-        canvas.current.style.top = " 0";
+        canvas.current.style.bottom = "100vh";
       },
     });
 

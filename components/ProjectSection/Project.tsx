@@ -18,7 +18,7 @@ interface Props {
   project: Project;
 }
 
-const Projects = ({ project }: Props) => {
+const Project = ({ project }: Props) => {
   const wrapper = useRef(null);
   const title = useRef(null);
   const image = useRef(null);
@@ -33,4 +33,4 @@ const Projects = ({ project }: Props) => {
   );
 };
 
-export default Projects;
+export default Project;

@@ -2,19 +2,18 @@ import { forwardRef, useState } from "react";
 import styled from "styled-components";
 
 import projects from "../../models/projects";
-import Projects from "./Projects";
+import Project from "./Project";
 
 const Section = styled.section`
   width: 100%;
-  height: 100vh;
 `;
 
 const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
-  const [project, setProject] = useState(projects[0]);
-
   return (
     <Section ref={ref}>
-      <Projects project={project} />
+      {projects.map((project) => (
+        <Project project={project} key={project.name} />
+      ))}
     </Section>
   );
 });
