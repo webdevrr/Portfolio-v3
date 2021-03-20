@@ -41,10 +41,16 @@ const Scene = ({ canvas, darkMode, setDarkMode, projectsRef }: Props) => {
   const [hovered, setHovered] = useState(false);
   const [progress, setProgress] = useState(null);
 
+  function offset(el) {
+    var rect = el.getBoundingClientRect(),
+      scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
+  }
+
   useEffect(() => {
     document.body.style.cursor = hovered ? "none" : "auto";
   }, [hovered]);
-  console.log(projectsRef.current.childNodes[projects.length - 1]);
 
   useEffect(() => {
     ScrollTrigger.create({
@@ -57,17 +63,19 @@ const Scene = ({ canvas, darkMode, setDarkMode, projectsRef }: Props) => {
       },
       onLeave: () => {
         canvas.current.style.position = "absolute";
-        console.log(
-          projectsRef.current.children[
-            projects.length - 1
-          ].getBoundingClientRect()
-        );
 
-        // canvas.current.style.top =
+        const topOffset = offset(
+          projectsRef.current.children[projects.length - 1]
+        ).top;
+
+        canvas.current.style.top = `${topOffset}px`;
       },
       onEnterBack: () => {
+        const topOffset = offset(
+          projectsRef.current.children[projects.length - 1]
+        ).top;
         canvas.current.style.position = "fixed";
-        canvas.current.style.bottom = "100vh";
+        canvas.current.style.top = "0";
       },
     });
 

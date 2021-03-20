@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import styled from "styled-components";
 
-import { Project } from "../../models/projects";
+import { ProjectModel } from "../../models/projects";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -15,7 +15,7 @@ const Title = styled.h1`
 `;
 const Image = styled.img``;
 interface Props {
-  project: Project;
+  project: ProjectModel;
 }
 
 const Project = ({ project }: Props) => {

@@ -1,4 +1,4 @@
-const projects: Project[] = [
+const projects: ProjectModel[] = [
   {
     index: 0,
     fontColor: "#cb4b16",
@@ -112,7 +112,7 @@ const projects: Project[] = [
 ];
 export default projects;
 
-export interface Project {
+export interface ProjectModel {
   index: number;
   fontColor: string;
   backgroundColor: string;
