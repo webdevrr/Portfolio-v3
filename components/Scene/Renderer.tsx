@@ -1,6 +1,11 @@
 import { Canvas } from "react-three-fiber";
 import { OrbitControls } from "@react-three/drei";
-import { Dispatch, MutableRefObject, SetStateAction } from "react";
+import {
+  Dispatch,
+  MutableRefObject,
+  SetStateAction,
+  SyntheticEvent,
+} from "react";
 
 import Scene from "./Scene";
 import { useRef } from "react";
@@ -13,8 +18,12 @@ interface Props {
 const Renderer = ({ darkMode, setDarkMode, projectsRef }: Props) => {
   const canvas = useRef(null);
 
+  const hadleTouchStart = (e: SyntheticEvent) => {
+    e.preventDefault();
+  };
   return (
     <div
+      onTouchStart={(e) => hadleTouchStart(e)}
       style={{
         width: "100%",
         height: "100vh",
