@@ -10,10 +10,19 @@ const Wrapper = styled.div`
   display: flex;
 `;
 const Title = styled.h1`
+  font-size: 4em;
+`;
+const Paragraph = styled.p``;
+const TextWrapper = styled.div`
   color: white;
   font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  padding-left: 10%;
+  justify-content: center;
 `;
-const Image = styled.img``;
+
 interface Props {
   project: ProjectModel;
 }
@@ -21,14 +30,15 @@ interface Props {
 const Project = ({ project }: Props) => {
   const wrapper = useRef(null);
   const title = useRef(null);
-  const image = useRef(null);
 
-  const { logo, name } = project;
+  const { name, description } = project;
 
   return (
     <Wrapper ref={wrapper}>
-      <Title ref={title}>{name}</Title>
-      <Image ref={image} src={logo} />
+      <TextWrapper>
+        <Title ref={title}>{name}</Title>
+        <Paragraph>{description}</Paragraph>
+      </TextWrapper>
     </Wrapper>
   );
 };

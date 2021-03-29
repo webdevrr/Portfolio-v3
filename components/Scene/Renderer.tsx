@@ -29,7 +29,7 @@ const Renderer = ({ darkMode, setDarkMode, projectsRef }: Props) => {
         height: "100vh",
         backgroundColor: "transparent",
         position: "fixed",
-        zIndex: 100,
+        // zIndex: 100,
         top: 0,
       }}
       ref={canvas}
@@ -49,6 +49,7 @@ const Renderer = ({ darkMode, setDarkMode, projectsRef }: Props) => {
         />
       </Canvas>
     </div>
+    // <></>
   );
 };
 
