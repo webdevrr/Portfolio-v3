@@ -31,6 +31,7 @@ const Role = styled.h2`
   font-size: 2em;
 `;
 const FlexContainer = styled.div`
+  z-index: 101;
   display: flex;
   flex-direction: column;
 `;

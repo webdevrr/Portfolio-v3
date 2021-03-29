@@ -41,12 +41,12 @@ const Renderer = ({ darkMode, setDarkMode, projectsRef }: Props) => {
           setDarkMode={setDarkMode}
           projectsRef={projectsRef}
         />
-        <OrbitControls
+        {/* <OrbitControls
           enablePan={false}
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
-        />
+        /> */}
       </Canvas>
     </div>
     // <></>

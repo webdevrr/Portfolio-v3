@@ -11,8 +11,11 @@ const Wrapper = styled.div`
 `;
 const Title = styled.h1`
   font-size: 4em;
+  z-index: 101;
 `;
-const Paragraph = styled.p``;
+const Paragraph = styled.p`
+  z-index: 101;
+`;
 const TextWrapper = styled.div`
   color: white;
   font-family: "Inter", sans-serif;

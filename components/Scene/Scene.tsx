@@ -49,7 +49,6 @@ const Scene = ({ canvas, darkMode, setDarkMode, projectsRef }: Props) => {
 
   useEffect(() => {
     ScrollTrigger.create({
-      markers: true,
       id: "Projects",
       trigger: projectsRef.current.children[projects.length - 1],
       end: "bottom bottom",

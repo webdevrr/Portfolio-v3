@@ -6,7 +6,6 @@ import Project from "./Project";
 
 const Section = styled.section`
   width: 100%;
-  z-index: 100;
 `;
 
 const ProjectsSection = forwardRef<HTMLElement>((props, ref) => {
