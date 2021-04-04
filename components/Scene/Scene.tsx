@@ -21,7 +21,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import offset from "../../utils/offset";
+
 import projects from "../../models/projects";
+import { mapValue } from "../../utils/map";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,7 +94,7 @@ const Scene = ({ canvas, darkMode, setDarkMode, projectsRef }: Props) => {
         (hovered ? state.mouse.y / 2 : 0),
       0.2
     );
-    shadow.current.position.y = map(progress, 0, 1, -5, -1.6);
+    shadow.current.position.y = mapValue(progress, 0, 1, -5, -1.6);
   });
 
   const [{ wobble, coat, color, ambient, env }] = useSpring(
@@ -107,11 +109,10 @@ const Scene = ({ canvas, darkMode, setDarkMode, projectsRef }: Props) => {
     },
     [darkMode, hovered, down]
   );
-  const map = (value, x1, y1, x2, y2) =>
-    ((value - x1) * (y2 - x2)) / (y1 - x1) + x2;
+
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 4]} fov={75}>
+      <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={75}>
         <a.ambientLight intensity={ambient} />
         <a.pointLight
           ref={light}
